@@ -1,0 +1,25 @@
+.example {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #000;
+  display: flex;
+  width: 200px;
+  height: 300px;
+
+  &__picture{
+    height: 200px;
+    width: 100%;
+  }
+
+  &__description {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ff0000;
+    height: 50px;
+    width: 100%;
+  }
+
+  &__price {
+    height: 20px;
+  }
+}
