@@ -21,3 +21,7 @@ function App() {
 }
 
 export default App;
+
+
+// Mind the shape not the color
+// Hover over the item you like to check it in color

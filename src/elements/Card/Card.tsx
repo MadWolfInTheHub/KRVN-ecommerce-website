@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom'
+import { IIteam } from '../../types/types';
 import './card.scss'
 
-const Card = () => {
+export interface Item {
+  item: IIteam;
+}
+
+const Card: FC<Item> = ({item}) => {
+  console.log(item.image)
   return (
     <Link to='' className='example'>
-      <img className='example__picture'src="" alt="pic" />
-      <p className='example__description'></p>
-      <div className="example__price"></div>
+      <img className='example__picture' src={item.image} alt="pic" />
+      <p className='example__description'>{item.description}</p>
+      <div className="example__price">{`$ ${item.price}`}</div>
     </Link>
   );
 };

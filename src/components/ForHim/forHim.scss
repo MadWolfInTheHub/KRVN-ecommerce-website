@@ -1,0 +1,33 @@
+.forHim {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+
+  &__cover {
+    height: 50vh;
+    width: 100vw;
+    background-image: url(../../../public/model-man.jpeg);;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 5vh;
+    position: sticky;
+    z-index: 0;
+    filter: grayscale(100%);
+  }
+  
+  &__items {
+    padding-top: 50px;
+    height: 1000px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background: white;
+    flex-direction: row;
+    scroll-behavior: smooth;
+    z-index: 1;
+    bottom: 5vh;
+  }
+}
