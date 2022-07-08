@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Footer from '../Footer/Footer';
 
-const CustomersPage = () => {
+const CustomersPage: FC = () => {
   return (
     <>
       <header className='customer'>

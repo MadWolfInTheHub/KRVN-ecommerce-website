@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom'
 import './navigation.scss'
-const Navigation = () => {
+const Navigation: FC= () => {
   return (
     <nav className='navigation'>
       <NavLink to='/'>Home</NavLink>

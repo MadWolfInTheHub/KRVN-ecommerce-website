@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { FC, useEffect } from 'react';
 import Footer from '../Footer/Footer';
 import './home.scss'
 import { Link } from 'react-router-dom';
+import { fetchItems } from '../../service/flightsGateway'
 
-const Home = () => {
-  
+const Home: FC = () => {
+
 
   return (
     <>
-        <section className="mainPage__cover"></section>
+      <section className="mainPage__cover"></section>
       <main className="mainPage">
         <section className="mainPage__container">
           <Link to='/forHim' className='mainPage__for-him'>
@@ -18,6 +19,9 @@ const Home = () => {
             <div className='mainPage__for-her_description'>For Her</div>
             </Link>
           <p className='mainPage__description'>Choose your ideal look!</p>
+        </section>
+        <section>
+
         </section>
       </main>
       <Footer/>
