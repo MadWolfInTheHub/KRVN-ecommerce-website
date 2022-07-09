@@ -7,7 +7,9 @@ import { Link } from 'react-router-dom';
 const Home: FC = () => {
   return (
     <>
-      <section className="mainPage__cover"/>
+      <section className="mainPage__cover">
+        <h1 className="studio">KRVN Studio</h1>
+      </section>
       <main className="mainPage">
         <section className="mainPage__container">
           <Link to='/forHim' className='mainPage__for-him'>

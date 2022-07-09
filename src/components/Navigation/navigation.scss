@@ -3,12 +3,32 @@
   width: 100vw;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   border-bottom: 1px solid gray;
   box-shadow: 0px 0px 24px 3px rgba(0,0,0,0.53);
   position: fixed;
   z-index: 2;
   background-color: white;
+
+  &__cart {
+    font-size: x-large;
+    position: relative;
+
+    &_items {
+      position: absolute;
+      top: -7px;
+      right: -10px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      font-size: medium;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      background-color: rgb(190, 49, 49);
+    }
+  }
 }
 
 a {
