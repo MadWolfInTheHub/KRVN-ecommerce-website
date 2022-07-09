@@ -5,11 +5,9 @@ import { Link } from 'react-router-dom';
 // import { fetchItems } from '../../service/flightsGateway'
 
 const Home: FC = () => {
-
-
   return (
     <>
-      <section className="mainPage__cover"></section>
+      <section className="mainPage__cover"/>
       <main className="mainPage">
         <section className="mainPage__container">
           <Link to='/forHim' className='mainPage__for-him'>
@@ -21,7 +19,6 @@ const Home: FC = () => {
           <p className='mainPage__description'>Choose your ideal look!</p>
         </section>
         <section>
-
         </section>
       </main>
       <Footer/>

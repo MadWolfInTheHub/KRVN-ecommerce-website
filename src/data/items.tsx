@@ -256,7 +256,7 @@ export const items: IIteam[] = [
   price: 30,
   slug: '',
   title: "coolest cap ever",
-  id: '101',
+  id: '115',
   },
  {
   category: {
@@ -273,7 +273,7 @@ export const items: IIteam[] = [
   price: 10,
   slug: '',
   title: "coolest cap ever",
-  id: '102',
+  id: '116',
   },
  {
   category: {
@@ -290,7 +290,7 @@ export const items: IIteam[] = [
   price: 99,
   slug: '',
   title: "coolest pants ever",
-  id: '103',
+  id: '117',
   },
  {
   category: {
@@ -307,7 +307,7 @@ export const items: IIteam[] = [
   price: 120,
   slug: '',
   title: "coolest pants ever",
-  id: '104',
+  id: '118',
   },
   {
     category: {
@@ -324,7 +324,7 @@ export const items: IIteam[] = [
     price: 68,
     slug: '',
     title: "coolest shirt ever",
-    id: '105',
+    id: '119',
     },
    {
     category: {
@@ -341,7 +341,7 @@ export const items: IIteam[] = [
     price: 120,
     slug: '',
     title: "coolest shirt ever",
-    id: '106',
+    id: '120',
     },
   {
     category: {
@@ -358,7 +358,7 @@ export const items: IIteam[] = [
     price: 245,
     slug: '',
     title: "coolest snickers ever",
-    id: '107',
+    id: '121',
     },
    {
     category: {
@@ -375,7 +375,7 @@ export const items: IIteam[] = [
     price: 150,
     slug: '',
     title: "coolest shirt ever",
-    id: '108',
+    id: '122',
     },
   {
     category: {
@@ -392,7 +392,7 @@ export const items: IIteam[] = [
     price: 205,
     slug: '',
     title: "coolest snickers ever",
-    id: '109',
+    id: '123',
     },
    {
     category: {
@@ -409,7 +409,7 @@ export const items: IIteam[] = [
     price: 170,
     slug: '',
     title: "coolest shirt ever",
-    id: '110',
+    id: '124',
     },
   {
     category: {
@@ -426,7 +426,7 @@ export const items: IIteam[] = [
     price: 45,
     slug: '',
     title: "coolest t-shirt ever",
-    id: '109',
+    id: '125',
     },
    {
     category: {
@@ -443,7 +443,7 @@ export const items: IIteam[] = [
     price: 50,
     slug: '',
     title: "coolest t-shirt ever",
-    id: '110',
+    id: '126',
     },
   {
     category: {
@@ -460,7 +460,7 @@ export const items: IIteam[] = [
     price: 15,
     slug: '',
     title: "coolest underwear ever",
-    id: '109',
+    id: '127',
     },
    {
     category: {
@@ -477,7 +477,7 @@ export const items: IIteam[] = [
     price: 20,
     slug: '',
     title: "coolest underwear ever",
-    id: '110',
+    id: '128',
     },
 
 ]

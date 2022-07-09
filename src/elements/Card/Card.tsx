@@ -8,12 +8,12 @@ export interface Item {
 }
 
 const Card: FC<Item> = ({item}) => {
-  console.log(item.image)
   return (
-    <Link to='' className='example'>
+    <Link to={item.id} className='example' >
       <img className='example__picture' src={item.image} alt="pic" />
       <p className='example__description'>{item.description}</p>
       <div className="example__price">{`$ ${item.price}`}</div>
+      <div className="example__options"/>
     </Link>
   );
 };
