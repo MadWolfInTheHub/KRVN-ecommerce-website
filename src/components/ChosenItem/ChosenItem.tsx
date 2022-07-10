@@ -5,13 +5,15 @@ import { IIteam } from '../../types/types';
 import './ChosenItem.scss'
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useDispatch } from 'react-redux';
+import { addItem } from '../../store/reducers/cartReducer';
 
 const ChosenItem = () => {
   const { pathname } = useLocation()
   const [itemSize, setItemSize] = useState('XS')
-  const [cart, setCart] = useState([0])
 
-  
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const sizeBtn: NodeListOf<Element> = document.querySelectorAll('[data-size]');
     const addToCartBtn: Element | null = document.querySelector('[data-id]')
@@ -26,20 +28,23 @@ const ChosenItem = () => {
       return;
     }
 
-    const onOrder: any = (): void => {
+    const addItemToCart = (): void => {
+      dispatch(addItem({id: Number(item.id), size: itemSize}))
+    }
+
+/*     const onOrder: any = (): void => {
       const newOrder: number[] = [...cart, Number(item.id)]
       setCart(newOrder)
-    }
+    } */
     
     sizeBtn?.forEach(el => el.addEventListener('click', onToggleSize))
-    addToCartBtn?.addEventListener('click', onOrder)
+    addToCartBtn?.addEventListener('click', addItemToCart)
     return(): void => {
       sizeBtn?.forEach(el => el.removeEventListener('click', onToggleSize))
-      addToCartBtn?.removeEventListener('click', onOrder)
+      addToCartBtn?.removeEventListener('click', addItemToCart)
     }
   })
   
-  console.log(cart)
   console.log(itemSize)
 
   const itemId: string = pathname.split('/')[2]

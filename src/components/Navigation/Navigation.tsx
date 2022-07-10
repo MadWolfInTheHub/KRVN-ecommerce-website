@@ -12,7 +12,9 @@ const Navigation: FC= () => {
       <div></div>
       <NavLink to='/customer'>Customer</NavLink>
       <div className="navigation__cart">
+      <NavLink to="/cart">
         <FontAwesomeIcon icon={faCartArrowDown}/>
+      </NavLink>
         <div className='navigation__cart_items'>0</div>
       </div>
     </nav>

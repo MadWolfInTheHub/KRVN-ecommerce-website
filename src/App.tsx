@@ -4,6 +4,7 @@ import ChosenItem from './components/ChosenItem/ChosenItem';
 import CustomersPage from './components/CustomersPage/CustomersPage';
 import Home from './components/Home/Home';
 import Navigation from './components/Navigation/Navigation';
+import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import ShowRoom from './components/ShowRoom/ShowRoom';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path='/forHer' element={<ShowRoom/>}/>
         <Route path='/forHer/:itemId' element={<ChosenItem/>}/>
         <Route path='/customer' element={<CustomersPage/>}/>
+        <Route path='/cart' element={<ShoppingCart/>}/>
       </Routes>
     </BrowserRouter>
   );
