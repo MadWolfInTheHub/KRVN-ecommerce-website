@@ -2,41 +2,54 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { items } from '../../data/items';
 import { IIteam } from '../../types/types';
-import './ChosenItem.scss'
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useDispatch } from 'react-redux';
-import { addItem } from '../../store/reducers/cartReducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { addItem, setNewAmount } from '../../store/reducers/cartReducer';
+import './ChosenItem.scss'
+import { Cart, CartItem } from '../../types/cart';
 
 const ChosenItem = () => {
-  const { pathname } = useLocation()
   const [itemSize, setItemSize] = useState('XS')
 
-  const dispatch = useDispatch();
+  const { pathname } = useLocation()
+  const itemId: string = pathname.split('/')[2]
+  const item: IIteam = items.filter(item => item.id === itemId)[0];
 
+
+  
+  const cart: CartItem[]= useSelector((state: Cart): CartItem[] => state.cart)
+  const [amount] = useState(1)
+  
+  
+  const dispatch = useDispatch();
+  
   useEffect(() => {
     const sizeBtn: NodeListOf<Element> = document.querySelectorAll('[data-size]');
     const addToCartBtn: Element | null = document.querySelector('[data-id]')
     const onToggleSize: any= (e: any): void => {
-
+      
       if(e.target.outerHTML.includes('data-size')) {
-
         sizeBtn.forEach(el => el.classList.remove('clicked'))
         e.target.classList.add('clicked')
         setItemSize(e.target.innerHTML)
       }
       return;
     }
-
+    
     const addItemToCart = (): void => {
-      dispatch(addItem({id: Number(item.id), size: itemSize}))
+      const orderId: number = Math.random()
+      if(cart.map(el => 
+        el.item.id === itemId && el.size === itemSize)
+        .includes(true)) {
+          console.log('ok')
+          dispatch(setNewAmount({itemId, itemSize, amount}))
+          return;
+      }
+      dispatch(addItem({item, size: itemSize, orderId, amount}))
+      console.log(cart)
     }
 
-/*     const onOrder: any = (): void => {
-      const newOrder: number[] = [...cart, Number(item.id)]
-      setCart(newOrder)
-    } */
-    
     sizeBtn?.forEach(el => el.addEventListener('click', onToggleSize))
     addToCartBtn?.addEventListener('click', addItemToCart)
     return(): void => {
@@ -44,11 +57,6 @@ const ChosenItem = () => {
       addToCartBtn?.removeEventListener('click', addItemToCart)
     }
   })
-  
-  console.log(itemSize)
-
-  const itemId: string = pathname.split('/')[2]
-  const item: IIteam = items.filter(item => item.id === itemId)[0];
 
   return (
     <div className='chosenExample'>

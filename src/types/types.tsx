@@ -8,6 +8,10 @@ export interface ICreatedBy{
   id: string;
 }
 
+export interface Item {
+  item: IIteam;
+}
+
 export interface IIteam {
   category: ICategory;
   createdAt: string;

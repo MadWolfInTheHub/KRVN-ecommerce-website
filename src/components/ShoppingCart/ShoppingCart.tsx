@@ -1,33 +1,33 @@
 import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
-import { items } from '../../data/items';
-import Card from '../../elements/Card/Card';
+import CartCard from '../../elements/CartCard/CartCard';
 import { CartItem, Cart } from '../../types/cart';
-import { IIteam } from '../../types/types';
 import "./shoppingCart.scss"
 
 const ShoppingCart: FC = () => {
   const cart: CartItem[]= useSelector((state: Cart): CartItem[] => state.cart)
-  // const dispatch = useDispatch();
-  const itemsToBuy:IIteam[]=  cart.map(item => items.filter(el => Number(el.id) === item.id)).flat()
-  const totalPrice: number = itemsToBuy.reduce((acc, el): number => { return acc + el.price }, 0)
-  console.log(itemsToBuy)
-
+  
+  const totalPrice: number = cart.reduce((acc, el): number => { return acc + (el.item.price * el.amount)}, 0)
   return (
     <div className='cart'>
       {
-       itemsToBuy[0] === undefined ?
+       cart[0] === undefined ?
        null
        :
-        itemsToBuy.map(el => (
-          <Card key={Math.random()} item={el}/>
+       cart.map(el => (
+
+          <CartCard item={el.item} size={el.size} orderId={el.orderId} amount={el.amount}/>
         ))
+      } 
+      {
+        totalPrice !== 0 ? 
+        <section>
+          <h3>Total:</h3>
+          <p>{totalPrice}</p>
+        </section>
+        : null 
       }
-      <section>
-        <h3>Total:</h3>
-        <p>{totalPrice}</p>
-      </section>
-    </div>
+      </div>
   );
 };
 

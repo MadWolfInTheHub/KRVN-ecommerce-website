@@ -7,10 +7,12 @@ import { Cart, CartItem } from '../../types/cart';
 import { useSelector } from 'react-redux';
 const Navigation: FC= () => {
   const cart: CartItem[]= useSelector((state: Cart): CartItem[] => state.cart)
-  const [amountToBut, setAmountToBuy] = useState(0)
+  const [amountToBuy, setAmountToBuy] = useState(0)
+  let amount = 0
+  cart.forEach(el => amount += el.amount);
 
   useEffect(() => {
-    setAmountToBuy(cart.length)
+    setAmountToBuy(amount)
   }, [cart])
   
   return (
@@ -24,10 +26,12 @@ const Navigation: FC= () => {
       <NavLink to="/cart">
         <FontAwesomeIcon icon={faCartArrowDown}/>
       </NavLink>
-        <div className='navigation__cart_items'>{amountToBut}</div>
+        <div className='navigation__cart_items'>{amountToBuy}</div>
       </div>
     </nav>
   );
 };
+
+
 
 export default Navigation;

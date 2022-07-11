@@ -1,0 +1,80 @@
+.cartExample {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 10vh;
+  width: 80vw;
+
+  &:first-child {
+  margin-top: 5vh;
+  }
+
+  &__picture{
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    display: flex;
+    box-shadow: 18px 17px 30px 1px rgba(0,0,0,0.51);
+    -webkit-box-shadow: 18px 17px 30px 1px rgba(0,0,0,0.51);
+    -moz-box-shadow: 18px 17px 30px 1px rgba(0,0,0,0.51);
+    filter: grayscale(100%);
+
+    &:hover {
+    filter: grayscale(0%);
+    }
+  }
+
+  &__description {
+    text-align: center;
+    padding: 0 10px;
+    width: 20vw;
+  }
+
+  &__price {
+    width: 10vw;
+    font-size: large;
+  }
+
+
+  &__amount {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &_number {
+      padding: 0 5px;
+    }
+  }
+
+  &__size {
+    width: 30px;
+    height: 30px;
+    border-radius: 30%;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+
+  }
+
+  &__deleteBtn{
+    border: none;
+    background-color: gray;
+    border-radius: 40px;
+    color: white;
+    font-size: 22px;
+    transform: rotate(45deg);
+
+    &:hover {
+      color: black;
+    }
+  }
+}
+
+.amount-btn {
+  border-radius: 50%;
+  background-color: white;
+}

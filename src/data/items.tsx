@@ -479,5 +479,4 @@ export const items: IIteam[] = [
     title: "coolest underwear ever",
     id: '128',
     },
-
 ]

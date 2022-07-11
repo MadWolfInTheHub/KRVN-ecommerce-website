@@ -1,7 +1,12 @@
+import { IIteam } from "./types";
+
 export interface CartItem {
-  id: number;
+  item: IIteam;
   size: string;
+  orderId: number,
+  amount: number;
 }
+
 
 export interface Cart {
   cart: CartItem[];

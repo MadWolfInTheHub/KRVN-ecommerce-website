@@ -1,11 +1,9 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom'
-import { IIteam } from '../../types/types';
+import { Item } from '../../types/types';
 import './card.scss'
 
-export interface Item {
-  item: IIteam;
-}
+
 
 const Card: FC<Item> = ({item}) => {
   return (
