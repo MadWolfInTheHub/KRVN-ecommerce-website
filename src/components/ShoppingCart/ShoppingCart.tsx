@@ -1,13 +1,31 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import CartCard from '../../elements/CartCard/CartCard';
 import { CartItem, Cart } from '../../types/cart';
+import OrderConfirmation from '../../elements/OrderConfirmation/OrderConfirmation';
 import "./shoppingCart.scss"
 
 const ShoppingCart: FC = () => {
   const cart: CartItem[]= useSelector((state: Cart): CartItem[] => state.cart)
   
   const totalPrice: number = cart.reduce((acc, el): number => { return acc + (el.item.price * el.amount)}, 0)
+
+  useEffect(() => {
+    const popUp = document.querySelector('.orderConfirmation');
+    const openPopUpBtn =  document.querySelector('.cart__orderBtn');   
+
+
+    const onClosePopUp = () => {
+      popUp?.classList.remove('hidden')
+    }
+    
+    openPopUpBtn?.addEventListener('click', onClosePopUp)
+    return () => {
+      openPopUpBtn?.removeEventListener('click', onClosePopUp)
+      
+    }
+  })
+
   return (
     <div className='cart'>
       {
@@ -21,12 +39,18 @@ const ShoppingCart: FC = () => {
       } 
       {
         totalPrice !== 0 ? 
-        <section>
-          <h3>Total:</h3>
-          <p>{totalPrice}</p>
+        <section className='cart__orderContainer'>
+          <div className='cart__orderContainer_totalPrice'>
+            <h2 className='cart__orderContainer_totalPrice_total'>Total: </h2>
+            <h2 className='cart__orderContainer_totalPrice_amount'>{totalPrice}</h2>
+          </div>
+          <button className='cart__orderBtn'>Order</button>
         </section>
         : null 
       }
+      <OrderConfirmation 
+        totalPrice={totalPrice} 
+        cart={cart}/>
       </div>
   );
 };

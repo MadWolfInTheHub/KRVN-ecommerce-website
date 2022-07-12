@@ -5,4 +5,33 @@
   align-items: center;
   height: 90vh;
   top: 5vh;
+
+  &__orderContainer {
+    margin-top: 5vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    &_totalPrice{
+      display: flex;
+      flex-direction: row;
+  
+  
+      &_total {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  &__orderBtn {
+    height: 30px;
+    width: 100px;
+    color: white;
+    font-size: large;
+    background-color: rgb(190, 49, 49);
+    border: none;
+    border-radius: 10px;
+  }
 }
