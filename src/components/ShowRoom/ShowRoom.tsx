@@ -3,7 +3,7 @@ import React, { FC, useState, useEffect} from 'react';
 import { useLocation } from 'react-router-dom';
 import { items } from '../../data/items';
 import Card from '../../elements/Card/Card';
-import Footer from '../Footer/Footer';
+import Options from '../../elements/Options/Options';
 import './ShowRoom.scss'
 
 
@@ -23,7 +23,8 @@ const ShowRoom: FC = () => {
       
       <main className='showRoom'>
         <header className={`showRoom__cover ${himOrHer}`}/>
-        <section className={`showRoom__items`}>
+        <Options/>
+        <section className='showRoom__items'>
           {
             items.filter(item => item.category.name === himOrHer)
             .map(item => (
@@ -31,7 +32,6 @@ const ShowRoom: FC = () => {
             ))
           }
         </section>
-        <Footer/>
       </main>
     }
     </>

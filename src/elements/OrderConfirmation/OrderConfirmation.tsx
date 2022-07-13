@@ -1,29 +1,56 @@
 import React, { FC, useEffect } from 'react';
-import { CartItem } from '../../types/cart';
+import { CartItem, OrderList } from '../../types/cart';
+import { orderList } from '../../data/orderList';
 import './orderConfirmation.scss'
+import { clearCart } from '../../store/reducers/cartReducer';
+import { useDispatch } from 'react-redux';
 
 interface Confirmation {
   totalPrice: number;
   cart: CartItem[];
 }
-const OrderConfirmation: FC<Confirmation> = ({totalPrice}) => {
-  const orderNumber = (Math.random() * 1000).toFixed(0)
+const OrderConfirmation: FC<Confirmation> = ({totalPrice, cart}) => {
+  const orderNumber = Number((Math.random() * 1000).toFixed(0))
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const popUp: Element | null = document.querySelector('.orderConfirmation');
     const closePopUpBtn: Element | null =  document.querySelector('.orderConfirmation__closeBtn');   
+    const orderBtn: Element | null =  document.querySelector('.orderConfirmation__btn');   
 
 
     const onClosePopUp = (): void => {
       popUp?.classList.add('hidden')
     }
+
+    const onOrder = () => {
+      const newOrder: OrderList = {
+        orderId: orderNumber,
+        orderItems: cart,
+        price: totalPrice,
+        status: 'ordered',
+        payed: false,
+        customer: {
+          id: 1,
+          name: 'Serhii',
+          address: 'Taiyuan,',
+        }
+      }
+      orderList.push(newOrder)
+      console.log(orderList)
+      popUp?.classList.add('hidden')
+      dispatch(clearCart())
+    }
     
     closePopUpBtn?.addEventListener('click', onClosePopUp)
+    orderBtn?.addEventListener('click', onOrder)
     return (): void => {
       closePopUpBtn?.removeEventListener('click', onClosePopUp)
+      orderBtn?.removeEventListener('click', onOrder)
       
     }
   })
+  console.log(cart, totalPrice)
   
   return (
     <section className='orderConfirmation hidden'>

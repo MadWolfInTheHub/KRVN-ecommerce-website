@@ -24,10 +24,13 @@ export const cartItem = createSlice({
         if(el.orderId === orderId) increase ? el.amount += increase : el.amount += decrease; 
       })
     },
+    clearCart: (state: CartItem[]) => {
+      return state = []
+    },
   },
 })
 
 
-export const { addItem, deleteItem, setNewAmount, toggleAmount } = cartItem.actions
+export const { addItem, deleteItem, setNewAmount, toggleAmount, clearCart } = cartItem.actions
 
 export default cartItem.reducer

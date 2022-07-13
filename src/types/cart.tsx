@@ -12,6 +12,21 @@ export interface Cart {
   cart: CartItem[];
 }
 
+export interface User {
+  id: number,
+  name: string,
+  address: string,
+}
+
+export interface OrderList {
+  orderId: number,
+  orderItems: CartItem[],
+  price: number,
+  status: string,
+  payed: boolean,
+  customer: User,
+}
+
 // export enum CartActionTypes {
 //   ADD_ITEM_TO_CART = 'ADD_ITEM_TO_CART',
 //   DELETE_ITEM_TO_CART = 'DELETE_ITEM_TO_CART',

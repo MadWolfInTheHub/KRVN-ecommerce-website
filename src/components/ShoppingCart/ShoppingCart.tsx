@@ -30,7 +30,7 @@ const ShoppingCart: FC = () => {
     <div className='cart'>
       {
        cart[0] === undefined ?
-       null
+       <p className='cart__noOrders'>No Orders yet!</p>
        :
        cart.map(el => (
 

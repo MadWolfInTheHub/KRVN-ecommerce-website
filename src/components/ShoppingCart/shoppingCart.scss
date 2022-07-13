@@ -6,6 +6,20 @@
   height: 90vh;
   top: 5vh;
 
+  &__noOrders {
+    position: absolute;
+    top: calc(50vh - 150px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: black;
+    font-size: larger;
+    color: white;
+  }
+
   &__orderContainer {
     margin-top: 5vh;
     width: 100vw;

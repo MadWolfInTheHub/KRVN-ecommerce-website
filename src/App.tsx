@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import ChosenItem from './components/ChosenItem/ChosenItem';
 import CustomersPage from './components/CustomersPage/CustomersPage';
+import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
 import Navigation from './components/Navigation/Navigation';
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
@@ -20,6 +21,7 @@ function App() {
         <Route path='/customer' element={<CustomersPage/>}/>
         <Route path='/cart' element={<ShoppingCart/>}/>
       </Routes>
+      <Footer/>
     </BrowserRouter>
   );
 }
