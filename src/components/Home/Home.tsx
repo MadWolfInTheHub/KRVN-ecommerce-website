@@ -23,7 +23,6 @@ const Home: FC = () => {
         <section>
         </section>
       </main>
-      <Footer/>
     </>
   );
 };

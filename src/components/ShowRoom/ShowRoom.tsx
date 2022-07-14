@@ -8,25 +8,23 @@ import './ShowRoom.scss'
 
 
 const ShowRoom: FC = () => {
-  const [forHim, setForHim] = useState(true)
+  const [forHim, setForHim] = useState(true);
   const { pathname, search } = useLocation();
-  console.log(search === '')
 
   const searchItems = search.split('&').map(el => el.split('='));
 
   const setSearchInfo = (infoType: string) => {
     const res: string[][] = searchItems.filter(el => el[0].includes(infoType));
     return res[0] === undefined ? null : res[0][1]
-  }
+  };
   
-  let clothes: string | null = setSearchInfo('clothes')
-  let type: string | null = setSearchInfo('type')
-  let size: string | null = setSearchInfo('size')
+  let clothes: string | null = setSearchInfo('clothes');
+  let type: string | null = setSearchInfo('type');
+  // let size: string | null = setSearchInfo('size');
   let priceFrom: number = Number(setSearchInfo('from'));
   let priceTo: number = Number(setSearchInfo('to'));
   
   const filterItemsAccordingToOptions = () => {
-    console.log(priceTo, priceFrom)
      return items.filter(el => (
       el.category.id === type &&
       (el.price > priceFrom) &&
@@ -36,11 +34,9 @@ const ShowRoom: FC = () => {
 
   useEffect((): void => {
     setForHim(pathname.includes('forHim') ? true : false)
-    
-    console.log(filterItemsAccordingToOptions())
-  }, [pathname])
+  }, [pathname]);
 
-  const himOrHer: string = forHim ? 'forHim' : 'forHer'
+  const himOrHer: string = forHim ? 'forHim' : 'forHer';
 
   return (
     <>      
