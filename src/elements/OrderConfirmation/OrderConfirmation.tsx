@@ -37,7 +37,6 @@ const OrderConfirmation: FC<Confirmation> = ({totalPrice, cart}) => {
         }
       }
       orderList.push(newOrder)
-      console.log(orderList)
       popUp?.classList.add('hidden')
       dispatch(clearCart())
     }
@@ -50,7 +49,6 @@ const OrderConfirmation: FC<Confirmation> = ({totalPrice, cart}) => {
       
     }
   })
-  console.log(cart, totalPrice)
   
   return (
     <section className='orderConfirmation hidden'>

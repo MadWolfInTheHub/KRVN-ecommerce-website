@@ -42,12 +42,10 @@ const ChosenItem = () => {
       if(cart.map(el => 
         el.item.id === itemId && el.size === itemSize)
         .includes(true)) {
-          console.log('ok')
           dispatch(setNewAmount({itemId, itemSize, amount}))
           return;
       }
       dispatch(addItem({item, size: itemSize, orderId, amount}))
-      console.log(cart)
     }
 
     sizeBtn?.forEach(el => el.addEventListener('click', onToggleSize))

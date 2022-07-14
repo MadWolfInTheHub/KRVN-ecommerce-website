@@ -20,7 +20,7 @@ const Navigation: FC= () => {
       <NavLink to='/'>Home</NavLink>
       <NavLink to='/forHim'>For Him</NavLink>
       <NavLink to='/forHer'>For Her</NavLink>
-      <div></div>
+      <div/>
       <NavLink to='/customer'>Customer</NavLink>
       <div className="navigation__cart">
       <NavLink to="/cart">
@@ -31,7 +31,5 @@ const Navigation: FC= () => {
     </nav>
   );
 };
-
-
 
 export default Navigation;

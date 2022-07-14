@@ -6,7 +6,7 @@ export const items: IIteam[] = [
  {
   category: {
     name: "forHim",
-    id: '1',
+    id: 'hats',
   },
   createdAt: "2022-07-08",
   createdBy: {
@@ -23,7 +23,7 @@ export const items: IIteam[] = [
  {
   category: {
     name: "forHim",
-    id: '1',
+    id: 'hats',
   },
   createdAt: "2022-07-08",
   createdBy: {
@@ -40,7 +40,7 @@ export const items: IIteam[] = [
  {
   category: {
     name: "forHim",
-    id: '1',
+    id: 'pants',
   },
   createdAt: "2022-07-08",
   createdBy: {
@@ -57,7 +57,7 @@ export const items: IIteam[] = [
  {
   category: {
     name: "forHim",
-    id: '1',
+    id: 'pants',
   },
   createdAt: "2022-07-08",
   createdBy: {
@@ -74,7 +74,7 @@ export const items: IIteam[] = [
   {
     category: {
       name: "forHim",
-      id: '1',
+      id: 'shirts',
     },
     createdAt: "2022-07-08",
     createdBy: {
@@ -91,7 +91,7 @@ export const items: IIteam[] = [
    {
     category: {
       name: "forHim",
-      id: '1',
+      id: 'shirts',
     },
     createdAt: "2022-07-08",
     createdBy: {
@@ -108,7 +108,7 @@ export const items: IIteam[] = [
   {
     category: {
       name: "forHim",
-      id: '1',
+      id: 'snickers',
     },
     createdAt: "2022-07-08",
     createdBy: {
@@ -125,7 +125,7 @@ export const items: IIteam[] = [
    {
     category: {
       name: "forHim",
-      id: '1',
+      id: 'snickers',
     },
     createdAt: "2022-07-08",
     createdBy: {
@@ -142,7 +142,7 @@ export const items: IIteam[] = [
   {
     category: {
       name: "forHim",
-      id: '1',
+      id: 'sportswear',
     },
     createdAt: "2022-07-08",
     createdBy: {
@@ -159,7 +159,7 @@ export const items: IIteam[] = [
    {
     category: {
       name: "forHim",
-      id: '1',
+      id: 'sportswear',
     },
     createdAt: "2022-07-08",
     createdBy: {
@@ -176,7 +176,7 @@ export const items: IIteam[] = [
   {
     category: {
       name: "forHim",
-      id: '1',
+      id: 't-shirts',
     },
     createdAt: "2022-07-08",
     createdBy: {
@@ -193,7 +193,7 @@ export const items: IIteam[] = [
    {
     category: {
       name: "forHim",
-      id: '1',
+      id: 't-shirts',
     },
     createdAt: "2022-07-08",
     createdBy: {
@@ -210,7 +210,7 @@ export const items: IIteam[] = [
   {
     category: {
       name: "forHim",
-      id: '1',
+      id: 'underwear',
     },
     createdAt: "2022-07-08",
     createdBy: {
@@ -227,7 +227,7 @@ export const items: IIteam[] = [
    {
     category: {
       name: "forHim",
-      id: '1',
+      id: 'underwear',
     },
     createdAt: "2022-07-08",
     createdBy: {
@@ -244,7 +244,7 @@ export const items: IIteam[] = [
  {
   category: {
     name: "forHer",
-    id: '1',
+    id: 'hats',
   },
   createdAt: "2022-07-08",
   createdBy: {
@@ -261,7 +261,7 @@ export const items: IIteam[] = [
  {
   category: {
     name: "forHer",
-    id: '1',
+    id: 'hats',
   },
   createdAt: "2022-07-08",
   createdBy: {
@@ -278,7 +278,7 @@ export const items: IIteam[] = [
  {
   category: {
     name: "forHer",
-    id: '1',
+    id: 'pants',
   },
   createdAt: "2022-07-08",
   createdBy: {
@@ -295,7 +295,7 @@ export const items: IIteam[] = [
  {
   category: {
     name: "forHer",
-    id: '1',
+    id: 'pants',
   },
   createdAt: "2022-07-08",
   createdBy: {
@@ -312,7 +312,7 @@ export const items: IIteam[] = [
   {
     category: {
       name: "forHer",
-      id: '1',
+      id: 'shirts',
     },
     createdAt: "2022-07-08",
     createdBy: {
@@ -329,7 +329,7 @@ export const items: IIteam[] = [
    {
     category: {
       name: "forHer",
-      id: '1',
+      id: 'shirts',
     },
     createdAt: "2022-07-08",
     createdBy: {
@@ -346,7 +346,7 @@ export const items: IIteam[] = [
   {
     category: {
       name: "forHer",
-      id: '1',
+      id: 'snickers',
     },
     createdAt: "2022-07-08",
     createdBy: {
@@ -363,7 +363,7 @@ export const items: IIteam[] = [
    {
     category: {
       name: "forHer",
-      id: '1',
+      id: 'snickers',
     },
     createdAt: "2022-07-08",
     createdBy: {
@@ -380,7 +380,7 @@ export const items: IIteam[] = [
   {
     category: {
       name: "forHer",
-      id: '1',
+      id: 'sportswear',
     },
     createdAt: "2022-07-08",
     createdBy: {
@@ -397,7 +397,7 @@ export const items: IIteam[] = [
    {
     category: {
       name: "forHer",
-      id: '1',
+      id: 'sportswear',
     },
     createdAt: "2022-07-08",
     createdBy: {
@@ -414,7 +414,7 @@ export const items: IIteam[] = [
   {
     category: {
       name: "forHer",
-      id: '1',
+      id: 't-shirts',
     },
     createdAt: "2022-07-08",
     createdBy: {
@@ -431,7 +431,7 @@ export const items: IIteam[] = [
    {
     category: {
       name: "forHer",
-      id: '1',
+      id: 't-shirts',
     },
     createdAt: "2022-07-08",
     createdBy: {
@@ -448,7 +448,7 @@ export const items: IIteam[] = [
   {
     category: {
       name: "forHer",
-      id: '1',
+      id: 'underwear',
     },
     createdAt: "2022-07-08",
     createdBy: {
@@ -465,7 +465,7 @@ export const items: IIteam[] = [
    {
     category: {
       name: "forHer",
-      id: '1',
+      id: 'underwear',
     },
     createdAt: "2022-07-08",
     createdBy: {
