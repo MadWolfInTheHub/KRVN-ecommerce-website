@@ -4,14 +4,15 @@ import { orderList } from '../../data/orderList';
 import './orderConfirmation.scss'
 import { clearCart } from '../../store/reducers/cartReducer';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 interface Confirmation {
   totalPrice: number;
   cart: CartItem[];
 }
 const OrderConfirmation: FC<Confirmation> = ({totalPrice, cart}) => {
-  const orderNumber = Number((Math.random() * 1000).toFixed(0))
-  const dispatch = useDispatch()
+  const orderNumber = Number((Math.random() * 1000).toFixed(0));
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const popUp: Element | null = document.querySelector('.orderConfirmation');
@@ -28,27 +29,31 @@ const OrderConfirmation: FC<Confirmation> = ({totalPrice, cart}) => {
         orderId: orderNumber,
         orderItems: cart,
         price: totalPrice,
-        status: 'ordered',
+        status: {
+          inProgress: true,
+          completed: false,
+          customerRefusal: false,
+          sellerRefusal: false,
+        },
         payed: false,
         customer: {
           id: 1,
-          name: 'Serhii',
-          address: 'Taiyuan,',
+          name: 'user',
+          address: 'country, city, street, building',
         }
-      }
-      orderList.push(newOrder)
-      popUp?.classList.add('hidden')
-      dispatch(clearCart())
+      };
+      orderList.unshift(newOrder);
+      popUp?.classList.add('hidden');
+      dispatch(clearCart());
     }
     
-    closePopUpBtn?.addEventListener('click', onClosePopUp)
-    orderBtn?.addEventListener('click', onOrder)
+    closePopUpBtn?.addEventListener('click', onClosePopUp);
+    orderBtn?.addEventListener('click', onOrder);
     return (): void => {
-      closePopUpBtn?.removeEventListener('click', onClosePopUp)
-      orderBtn?.removeEventListener('click', onOrder)
-      
+      closePopUpBtn?.removeEventListener('click', onClosePopUp);
+      orderBtn?.removeEventListener('click', onOrder);
     }
-  })
+  });
   
   return (
     <section className='orderConfirmation hidden'>
@@ -58,7 +63,9 @@ const OrderConfirmation: FC<Confirmation> = ({totalPrice, cart}) => {
       <p>Address: customer's address</p>
       <p>Delivery time: 4 days</p>
       <p>Total: ${totalPrice}</p>
-      <button className='orderConfirmation__btn'>Confirm</button>
+      <Link to='/customer'>
+        <button className='orderConfirmation__btn'>Confirm</button>
+      </Link>
     </section>
   );
 };

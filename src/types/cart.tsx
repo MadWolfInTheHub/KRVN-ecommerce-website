@@ -18,14 +18,22 @@ export interface User {
   address: string,
 }
 
+interface status {
+  inProgress: boolean;
+  completed: boolean;
+  customerRefusal: boolean;
+  sellerRefusal: boolean;
+}
+
 export interface OrderList {
   orderId: number,
   orderItems: CartItem[],
   price: number,
-  status: string,
+  status: status,
   payed: boolean,
   customer: User,
 }
+
 
 // export enum CartActionTypes {
 //   ADD_ITEM_TO_CART = 'ADD_ITEM_TO_CART',

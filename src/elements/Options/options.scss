@@ -15,6 +15,7 @@
   box-shadow: 18px 17px 30px 1px rgba(0,0,0,0.51);
   -webkit-box-shadow: 18px 17px 30px 1px rgba(0,0,0,0.51);
   -moz-box-shadow: 18px 17px 30px 1px rgba(0,0,0,0.51);
+  cursor: pointer;
 }
 
 .options {
@@ -43,6 +44,7 @@
     background-color: black;
     color: white;
     transform: rotate(45deg);
+    cursor: pointer;
     
   }
 
@@ -70,16 +72,15 @@
     align-items: center;
     justify-content: space-around;
     
-
     &_clothes {
       width: 100px;
       height: 40px;
       border-radius: 10px;
       background-color: black;
       color: white;
-
+      cursor: pointer;   
     }
-
+    
     &_size {
       margin: 10px 0;
       width: 40px;
@@ -88,21 +89,23 @@
       text-align: center;
       background-color: black;
       color: white;
+      cursor: pointer;   
     }
   }
-
-
+  
+  
   &__price {
     width: 200px;
     margin-bottom: 10px;
   }
-
+  
   &__findBtn {
     width: 200px;
     height: 40px;
     border-radius: 10px;
     background-color: black;
     color: white;
+    cursor: pointer;   
   }
 }
 

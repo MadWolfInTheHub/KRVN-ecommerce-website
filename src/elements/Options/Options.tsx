@@ -50,9 +50,10 @@ const Options:FC = () => {
     const sizeSelect: HTMLInputElement | null = document.querySelector('.options__type_size')
 
     const onFormSubmit = (e:any) => {
-      pathname(`?clothes=${searchInput?.value}&type=${typeSelect?.value}&size=${sizeSelect?.value}&from=${price[0]}&to=${price[1]}`)
+      console.log(e.target)
       e.preventDefault()
       onCloseOptionsForm()
+      pathname(`?clothes=${searchInput?.value}&type=${typeSelect?.value}&size=${sizeSelect?.value}&from=${price[0]}&to=${price[1]}`)
     }
     
     openBtn?.addEventListener('click', onOpenOptionsForm)
@@ -74,7 +75,7 @@ const Options:FC = () => {
       </button>
 
       <form className='options hidden'>
-        <button className='options__closeBtn'>+</button>
+        <div className='options__closeBtn'>+</div>
         <h4 className='options__header'>What are you looking for?</h4>
         <div className='options__searchField'>
           <FontAwesomeIcon className='options__searchField_icon' icon={faSearch}/>

@@ -1,10 +1,14 @@
 import React, { FC } from 'react';
-import Footer from '../Footer/Footer';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { orderList } from '../../data/orderList';
 import './customer.scss'
+import { Link } from 'react-router-dom';
+import CustomersOrderCard from '../../elements/CustomersOrderCard/CustomersOrderCard';
 
 const CustomersPage: FC = () => {
+
+
   return (
     <div className='customer'>
       <header className='customer-header'>
@@ -22,13 +26,19 @@ const CustomersPage: FC = () => {
 
         <section className='customer-container__userOrders'>
           <div className='customer-container__userOrders_previousOrders'>
-            <span>Last Orders: </span> 0
+            <span>Last Order: </span>
+            {
+              orderList[0].orderItems.map(el => (
+                <CustomersOrderCard el={el}/>
+              ))
+            }
+            <div>Total: {orderList[0].price}</div>
           </div>
           <div className='customer-container__userOrders_ordersInProgress'>
-            <span>Orders in progress: </span> 0
+            <span>Orders in progress: </span>{orderList.filter(el => el.status.inProgress === true).length}
           </div>
           <div className='customer-container__userOrders_completedOrder'>
-          <span>Completed orders: </span> 0
+          <span>Completed orders: </span>{orderList.filter(el => el.status.completed === true).length}
           </div>
         </section>
       </main>
