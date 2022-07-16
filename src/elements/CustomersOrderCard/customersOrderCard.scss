@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 50px;
+
   width: 300px;
 
   &__picture{
@@ -42,7 +42,7 @@
     height: 20px;
     border-radius: 30%;
     display: flex;
-    align-items:center;
+    align-items: center;
     justify-content: center;
     border: 1px solid black;
   }

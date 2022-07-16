@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import Footer from '../Footer/Footer';
 import './home.scss'
 import { Link } from 'react-router-dom';
 // import { fetchItems } from '../../service/flightsGateway'

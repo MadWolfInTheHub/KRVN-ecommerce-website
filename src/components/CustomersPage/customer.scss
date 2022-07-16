@@ -38,19 +38,35 @@
     height: 400px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 
+    &_navigation {
+      width: 400px;
+      margin: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+    
     &_previousOrders {
-      
+      padding: 0 30px;
+      border: 1px solid black;
+      border-radius: 20px;
+      overflow: scroll;
+      scroll-behavior: smooth;
+      cursor: all-scroll;
+    }
+    
+    &_previousOrders-price {
+      text-align: right;
     }
 
-    &_ordersInProgress {
-      
-    }
-
-    &_lastOrder {
-      
-    }
   }
+}
+
+.ordersNavBtn {
+  background-color: black;
+  color: white;
+  height: 30px;
+  border-radius: 10px;
+  cursor: pointer;
 }

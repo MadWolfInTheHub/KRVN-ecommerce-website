@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './customersOrderCard.scss'
 
-const CustomersOrderCard = ({el}: any) => {
+const CustomersOrderCard = ({el, orderId}: any) => {
 
   return (
     <div className='order'>
