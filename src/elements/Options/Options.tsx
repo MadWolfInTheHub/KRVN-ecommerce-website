@@ -2,7 +2,7 @@ import React, {FC, useEffect, useState} from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import Slider from '@material-ui/core/Slider';
+/* import Slider from '@material-ui/core/Slider'; */
 import './options.scss';
 
 const clothTypeOptions: string[] = ['hats', 'pants', 'shirts', 'snickers', 'sportswear', 't-shirt', 'underwear']
@@ -112,7 +112,7 @@ const Options:FC = () => {
           </select> 
         </div>
         <div className='options__price'>
-            <Slider
+{/*             <Slider
               className='options__price_range'
               value={price}
               min={0}
@@ -120,7 +120,7 @@ const Options:FC = () => {
               step={5}
               onChange={rangeSelector}
               valueLabelDisplay="auto"
-            />
+            /> */}
             $ {price[0]} - $ {price[1]}
         </div>
         <button className='options__findBtn'>Find</button>
