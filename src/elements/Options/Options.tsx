@@ -21,16 +21,16 @@ const Options:FC = () => {
   let clothes: string | null = setSearchInfo('clothes')
   let type: string | null = setSearchInfo('type')
   let size: string | null = setSearchInfo('size')
-  let priceFrom: number = Number(setSearchInfo('from'));
-  let priceTo: number = Number(setSearchInfo('to'))
-  const [price, setPrice] = useState([priceFrom, priceTo])
+/*   let priceFrom: number = Number(setSearchInfo('from'));
+  let priceTo: number = Number(setSearchInfo('to')) */
+/*   const [price, setPrice] = useState([priceFrom, priceTo]) */
   const [cloth, setCloth] = useState(clothes)
 
 
   // Changing State when volume increases/decreases
-  const rangeSelector = (event: any, newValue: any): void => {
+/*   const rangeSelector = (event: any, newValue: any): void => {
     setPrice(newValue)
-  };
+  }; */
 
   useEffect(() => {
     const openBtn = document.querySelector('.searchBtn')
@@ -53,7 +53,8 @@ const Options:FC = () => {
       console.log(e.target)
       e.preventDefault()
       onCloseOptionsForm()
-      pathname(`?clothes=${searchInput?.value}&type=${typeSelect?.value}&size=${sizeSelect?.value}&from=${price[0]}&to=${price[1]}`)
+      // pathname(`?clothes=${searchInput?.value}&type=${typeSelect?.value}&size=${sizeSelect?.value}&from=${price[0]}&to=${price[1]}`)
+      pathname(`?clothes=${searchInput?.value}&type=${typeSelect?.value}&size=${sizeSelect?.value}`)
     }
     
     openBtn?.addEventListener('click', onOpenOptionsForm)
@@ -121,7 +122,7 @@ const Options:FC = () => {
               onChange={rangeSelector}
               valueLabelDisplay="auto"
             /> */}
-            $ {price[0]} - $ {price[1]}
+{/*             $ {price[0]} - $ {price[1]} */}
         </div>
         <button className='options__findBtn'>Find</button>
       </form>

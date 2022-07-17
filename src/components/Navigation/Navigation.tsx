@@ -13,7 +13,7 @@ const Navigation: FC= () => {
 
   useEffect(() => {
     setAmountToBuy(amount)
-  }, [cart])
+  }, [amount])
   
   return (
     <nav className='navigation'>
