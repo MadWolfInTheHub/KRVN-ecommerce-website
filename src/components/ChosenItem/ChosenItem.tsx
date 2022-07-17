@@ -61,7 +61,7 @@ const ChosenItem = () => {
       <h1>KRVN Studio</h1>
       <h3>Mind the shape not the color!</h3>
       <h4 className='chosenExample__description'>{item.description}</h4>
-      <img className='chosenExample__picture' src={`../../../public/${item.image}`} alt="pic" />
+      <img className='chosenExample__picture' src={item.image} alt="pic" />
       <h2 className="chosenExample__price">{`$ ${item.price}`}</h2>
       <div className="chosenExample__options">
       <div className='chosenExample__order-container'>

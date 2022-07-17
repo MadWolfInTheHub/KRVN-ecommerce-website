@@ -8,7 +8,7 @@ const CustomersOrderCard = ({el, orderId}: any) => {
     <div className='order'>
       <div className='order__amount'>{el.amount}</div>
       <Link to={`/${el.item.category.name}/${el.item.id}`}>
-        <img className='order__picture' src={`../../../public/${el.item.image}`} alt="pic"/>
+        <img className='order__picture' src={el.item.image} alt="pic"/>
       </Link>
       <h5 className='order__description'>{el.item.description}</h5>
       <h5 className='order__size'>{el.size}</h5>
