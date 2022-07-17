@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes} from 'react-router-dom';
+import About from './components/About/About';
 import ChosenItem from './components/ChosenItem/ChosenItem';
 import CustomersPage from './components/CustomersPage/CustomersPage';
 import Footer from './components/Footer/Footer';
@@ -20,6 +21,7 @@ function App() {
         <Route path='/forHer/:itemId' element={<ChosenItem/>}/>
         <Route path='/customer' element={<CustomersPage/>}/>
         <Route path='/cart' element={<ShoppingCart/>}/>
+        <Route path='/about' element={<About/>}/>
       </Routes>
       <Footer/>
     </BrowserRouter>

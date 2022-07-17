@@ -8,7 +8,7 @@ import './card.scss'
 const Card: FC<Item> = ({item}) => {
   return (
     <Link to={item.id} className='example' >
-      <img className='example__picture' src={item.image} alt="pic" />
+      <img src={`../../../public/${item.image}`} className='example__picture' alt="pic" />
       <p className='example__description'>{item.description}</p>
       <div className="example__price">{`$ ${item.price}`}</div>
       <div className="example__options"/>

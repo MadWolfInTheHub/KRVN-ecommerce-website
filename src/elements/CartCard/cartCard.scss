@@ -67,6 +67,7 @@
     color: white;
     font-size: 22px;
     transform: rotate(45deg);
+    cursor: pointer;
 
     &:hover {
       color: black;
@@ -77,4 +78,5 @@
 .amount-btn {
   border-radius: 50%;
   background-color: white;
+  cursor: pointer;
 }

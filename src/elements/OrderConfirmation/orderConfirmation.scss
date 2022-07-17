@@ -18,6 +18,7 @@
     color: white;
     font-size: 22px;
     transform: rotate(45deg);
+    cursor: pointer;
   }
   
   &__btn {
@@ -28,6 +29,7 @@
     background-color: rgb(190, 49, 49);
     border: none;
     border-radius: 10px;
+    cursor: pointer;
   }
 }
 

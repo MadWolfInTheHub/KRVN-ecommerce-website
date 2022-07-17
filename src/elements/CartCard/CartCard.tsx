@@ -19,7 +19,7 @@ const CartCard: FC<CartItem> = ({item, size, orderId, amount}) => {
   return (
     <div className='cartExample'>
       <Link to={`/${item.category.name}/${item.id}`}>
-        <img className='cartExample__picture' src={item.image} alt="pic"/>
+        <img className='cartExample__picture' src={`../../../public/${item.image}`} alt="pic"/>
       </Link>
       <h4 className='cartExample__description'>{item.description}</h4>
       <h4 className='cartExample__size'>{size}</h4>
