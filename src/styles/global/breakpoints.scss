@@ -1,0 +1,16 @@
+$sm: 600px;
+
+
+@mixin small-screen {
+    @media screen and (max-width: $sm) {
+        @content;
+    }
+}
+
+
+@mixin large-screen {
+    @media screen and (min-width: $sm) {
+        @content;
+    }
+}
+

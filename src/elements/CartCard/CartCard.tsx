@@ -11,7 +11,7 @@ const CartCard: FC<CartItem> = ({item, size, orderId, amount}) => {
   const increase = 1;
   const decrease = -1;
 
-  useEffect(() => {
+  useEffect((): void => {
     if(amount === 0) dispatch(deleteItem(orderId))
   })
   
@@ -27,14 +27,14 @@ const CartCard: FC<CartItem> = ({item, size, orderId, amount}) => {
       <div className='cartExample__amount'>
         <button 
         data-id={orderId} 
-        className='cartExample__amount amount-btn'
+        className='btn amount-btn'
         onClick={() => dispatch(toggleAmount({orderId, decrease}))}>
           -
         </button>
         <div className='cartExample__amount_number'>{amount}</div>
         <button 
         data-id={orderId} 
-        className='cartExample__amount amount-btn'
+        className='btn amount-btn'
         onClick={() => dispatch(toggleAmount({orderId, increase}))}
         >
           +
@@ -43,7 +43,7 @@ const CartCard: FC<CartItem> = ({item, size, orderId, amount}) => {
       <div className='cartExample__order-container'>
         <button 
         data-id={orderId} 
-        className='cartExample__deleteBtn' 
+        className='cartExample__deleteBtn btn' 
         onClick={() => dispatch(deleteItem(orderId))}
         >
           +

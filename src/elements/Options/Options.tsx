@@ -1,82 +1,71 @@
 import {FC, useEffect, useState} from 'react';
-import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { NavigateFunction, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Slider from "react-slider";
 import './options.scss';
-
-const clothTypeOptions: string[] = ['hats', 'pants', 'shirts', 'snickers', 'sportswear', 't-shirt', 'underwear']
-const sizeOptions: string[] = ['XS', 'S', 'M', 'L']
+import { clothTypeOptions, sizeOptions } from '../../data/orderList';
 
 const Options:FC = () => {
-  const pathname: NavigateFunction = useNavigate()
-  const example = '?clothes=&type=&hats&size=S&from=0&to=300'
-  const searchItems = example.split('&').map(el => el.split('='));
+  const { search } = useLocation();
+  const pathname: NavigateFunction = useNavigate();
+  const searchItems: string[][] = search.split('&').map(el => el.split('='));
 
-  const setSearchInfo = (infoType: string) => {
+  const setSearchInfo = (infoType: string): string |null => {
     const res: string[][] = searchItems.filter(el => el[0].includes(infoType));
-    return res[0] === undefined ? null : res[0][1]
+    return res[0] === undefined ? null : res[0][1];
   }
   
-  let clothes: string | null = setSearchInfo('clothes')
-  let type: string | null = setSearchInfo('type')
-  let size: string | null = setSearchInfo('size')
+  let clothes: string | null = setSearchInfo('clothes');
+  let type: string | null = setSearchInfo('type');
+  let size: string | null = setSearchInfo('size');
   let priceFrom: number = Number(setSearchInfo('from'));
-  let priceTo: number = Number(setSearchInfo('to'))
-  const [price, setPrice] = useState([priceFrom, priceTo])
-  const [cloth, setCloth] = useState(clothes)
-
-
-  // Changing State when volume increases/decreases
-  // const rangeSelector = (event: any, newValue: any): void => {
-  //   setPrice(newValue)
-  // };
+  let priceTo: number = setSearchInfo('to') === null ? 300 : Number(setSearchInfo('to'));
+  const [price, setPrice] = useState([priceFrom, priceTo]);
+  const [cloth, setCloth] = useState(clothes);
 
   useEffect(() => {
-    const openBtn = document.querySelector('.searchBtn')
-    const closeBtn = document.querySelector('.options__closeBtn')
+    const openBtn: Element | null = document.querySelector('.searchBtn');
+    const closeBtn: Element | null = document.querySelector('.options__closeBtn');
 
-    const onOpenOptionsForm = (e: any) => {
-      form?.classList.remove('hidden')
+    const onOpenOptionsForm = (): void => {
+      form?.classList.remove('hidden');
     }
 
-    const onCloseOptionsForm = () => {
-      form?.classList.add('hidden')
+    const onCloseOptionsForm = (): void => {
+      form?.classList.add('hidden');
     }
 
-    const form: Element | null = document.querySelector('.options')
-    const searchInput: HTMLInputElement | null = document.querySelector('.options__searchField_text')
-    const typeSelect: HTMLInputElement | null = document.querySelector('.options__type_clothes')
-    const sizeSelect: HTMLInputElement | null = document.querySelector('.options__type_size')
+    const form: Element | null = document.querySelector('.options');
+    const searchInput: HTMLInputElement | null = document.querySelector('.options__searchField_text');
+    const typeSelect: HTMLInputElement | null = document.querySelector('.options__type_clothes');
+    const sizeSelect: HTMLInputElement | null = document.querySelector('.options__type_size');
 
-    const onFormSubmit = (e:any) => {
-      console.log(e.target)
-      e.preventDefault()
-      onCloseOptionsForm()
-      pathname(`?clothes=${searchInput?.value}&type=${typeSelect?.value}&size=${sizeSelect?.value}&from=${price[0]}&to=${price[1]}`)
-      // pathname(`?clothes=${searchInput?.value}&type=${typeSelect?.value}&size=${sizeSelect?.value}`)
+    const onFormSubmit = (e:any): void => {
+      e.preventDefault();
+      onCloseOptionsForm();
+      pathname(`?clothes=${searchInput?.value}&type=${typeSelect?.value}&size=${sizeSelect?.value}&from=${price[0]}&to=${price[1]}`);
     }
     
-    openBtn?.addEventListener('click', onOpenOptionsForm)
-    closeBtn?.addEventListener('click', onCloseOptionsForm)
-    form?.addEventListener('submit', onFormSubmit)
-    return () => {
-      openBtn?.removeEventListener('click', onOpenOptionsForm)
-      closeBtn?.removeEventListener('click', onCloseOptionsForm)
-      form?.removeEventListener('submit', onFormSubmit)
-      
-    }
-  })
+    openBtn?.addEventListener('click', onOpenOptionsForm);
+    closeBtn?.addEventListener('click', onCloseOptionsForm);
+    form?.addEventListener('submit', onFormSubmit);
+    return (): void => {
+      openBtn?.removeEventListener('click', onOpenOptionsForm);
+      closeBtn?.removeEventListener('click', onCloseOptionsForm);
+      form?.removeEventListener('submit', onFormSubmit);
+    };
+  });
   
   
   return (
     <>
-      <button className='searchBtn'>
+      <button className='searchBtn btn'>
         <FontAwesomeIcon icon={faSearch}/>
       </button>
 
       <form className='options hidden'>
-        <div className='options__closeBtn'>+</div>
+        <div className='options__closeBtn btn'>+</div>
         <h4 className='options__header'>What are you looking for?</h4>
         <div className='options__searchField'>
           <FontAwesomeIcon className='options__searchField_icon' icon={faSearch}/>
@@ -120,12 +109,11 @@ const Options:FC = () => {
               step={5}
               pearling
               minDistance={10}
-              // onChange={rangeSelector}
               onAfterChange={([minValue, maxValue]: number[]) => setPrice([minValue, maxValue])}
             />
             $ {price[0]} - $ {price[1]}
         </div>
-        <button className='options__findBtn'>Find</button>
+        <button className='options__findBtn btn'>Find</button>
       </form>
     </>
   );

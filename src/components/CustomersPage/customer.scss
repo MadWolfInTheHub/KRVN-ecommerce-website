@@ -1,3 +1,5 @@
+@import '../../styles/global/variables.scss';
+
 .customer {
   display: flex;
   flex-direction: row;
@@ -26,10 +28,10 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background-color: black;
-      color: white;
-      border-radius: 50%;
-      font-size: 130px;
+      background-color: $color-primary;
+      color: $text-color-secondary;
+      border-radius: $border-radius-circle;
+      font-size: $unit * 16;
     }
   }
 
@@ -49,7 +51,7 @@
     
     &_previousOrders {
       padding: 0 30px;
-      border: 1px solid black;
+      border: $border-primary;
       border-radius: 20px;
       overflow: scroll;
       scroll-behavior: smooth;
@@ -64,8 +66,8 @@
 }
 
 .ordersNavBtn {
-  background-color: black;
-  color: white;
+  background-color: $color-primary;
+  color: $color-secondary;
   height: 30px;
   border-radius: 10px;
   cursor: pointer;

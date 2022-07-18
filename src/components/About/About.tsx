@@ -4,7 +4,7 @@ import './about.scss'
 const About = () => {
   return (
     <h1 className='about'>
-      We are cool!!!
+      We are awesome!!!
     </h1>
   );
 };

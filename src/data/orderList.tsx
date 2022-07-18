@@ -1,5 +1,8 @@
 import { OrderList } from "../types/cart";
 
+export const clothTypeOptions: string[] = ['hats', 'pants', 'shirts', 'snickers', 'sportswear', 't-shirt', 'underwear']
+export const sizeOptions: string[] = ['XS', 'S', 'M', 'L']
+
 export const orderList: OrderList[] = [
   {
     orderId: 499,
@@ -29,8 +32,8 @@ export const orderList: OrderList[] = [
     ],
     price: 198,
     status: {
-      inProgress: false,
-      completed: true,
+      inProgress: true,
+      completed: false,
       customerRefusal: false,
       sellerRefusal: false,
     },
@@ -91,8 +94,8 @@ export const orderList: OrderList[] = [
     ],
     price: 600,
     status: {
-      inProgress: true,
-      completed: false,
+      inProgress: false,
+      completed: true,
       customerRefusal: false,
       sellerRefusal: false,
     },

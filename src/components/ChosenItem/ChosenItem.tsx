@@ -10,29 +10,29 @@ import './ChosenItem.scss'
 import { Cart, CartItem } from '../../types/cart';
 
 const ChosenItem = () => {
-  const [itemSize, setItemSize] = useState('XS')
+  const [itemSize, setItemSize] = useState('XS');
 
-  const { pathname } = useLocation()
-  const itemId: string = pathname.split('/')[2]
+  const { pathname } = useLocation();
+  const itemId: string = pathname.split('/')[2];
   const item: IIteam = items.filter(item => item.id === itemId)[0];
 
 
   
-  const cart: CartItem[]= useSelector((state: Cart): CartItem[] => state.cart)
-  const [amount] = useState(1)
+  const cart: CartItem[]= useSelector((state: Cart): CartItem[] => state.cart);
+  const [amount] = useState(1);
   
   
   const dispatch = useDispatch();
   
   useEffect(() => {
     const sizeBtn: NodeListOf<Element> = document.querySelectorAll('[data-size]');
-    const addToCartBtn: Element | null = document.querySelector('[data-id]')
+    const addToCartBtn: Element | null = document.querySelector('[data-id]');;
     const onToggleSize: any= (e: any): void => {
       
       if(e.target.outerHTML.includes('data-size')) {
-        sizeBtn.forEach(el => el.classList.remove('clicked'))
-        e.target.classList.add('clicked')
-        setItemSize(e.target.innerHTML)
+        sizeBtn.forEach(el => el.classList.remove('clicked'));
+        e.target.classList.add('clicked');
+        setItemSize(e.target.innerHTML);
       }
       return;
     }
@@ -42,17 +42,17 @@ const ChosenItem = () => {
       if(cart.map(el => 
         el.item.id === itemId && el.size === itemSize)
         .includes(true)) {
-          dispatch(setNewAmount({itemId, itemSize, amount}))
+          dispatch(setNewAmount({itemId, itemSize, amount}));
           return;
       }
-      dispatch(addItem({item, size: itemSize, orderId, amount}))
+      dispatch(addItem({item, size: itemSize, orderId, amount}));
     }
 
-    sizeBtn?.forEach(el => el.addEventListener('click', onToggleSize))
-    addToCartBtn?.addEventListener('click', addItemToCart)
+    sizeBtn?.forEach(el => el.addEventListener('click', onToggleSize));
+    addToCartBtn?.addEventListener('click', addItemToCart);
     return(): void => {
-      sizeBtn?.forEach(el => el.removeEventListener('click', onToggleSize))
-      addToCartBtn?.removeEventListener('click', addItemToCart)
+      sizeBtn?.forEach(el => el.removeEventListener('click', onToggleSize));
+      addToCartBtn?.removeEventListener('click', addItemToCart);
     }
   })
 

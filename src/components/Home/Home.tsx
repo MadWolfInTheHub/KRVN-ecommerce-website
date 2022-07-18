@@ -11,15 +11,12 @@ const Home: FC = () => {
       </section>
       <main className="mainPage">
         <section className="mainPage__container">
-          <Link to='/forHim' className='mainPage__for-him'>
-            <div className='mainPage__for-him_description'>For Him</div>
+          <Link to='/forHim' className='mainPage__for-him-her card' style={{backgroundImage: 'url(./jon-lead.jpeg)'}}>
+            <div className='mainPage__for-him-her_description'>For Him</div>
           </Link>
-          <Link to='forHer' className='mainPage__for-her'>
-            <div className='mainPage__for-her_description'>For Her</div>
-            </Link>
-          <p className='mainPage__description'>Choose your ideal look!</p>
-        </section>
-        <section>
+          <Link to='/forHer' className='mainPage__for-him-her card' style={{backgroundImage: 'url(./model-girl.jpeg)'}}>
+            <div className='mainPage__for-him-her_description'>For Her</div>
+          </Link>
         </section>
       </main>
     </>

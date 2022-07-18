@@ -11,20 +11,19 @@ const ShoppingCart: FC = () => {
   const totalPrice: number = cart.reduce((acc, el): number => { return acc + (el.item.price * el.amount)}, 0)
 
   useEffect(() => {
-    const popUp = document.querySelector('.orderConfirmation');
-    const openPopUpBtn =  document.querySelector('.cart__orderBtn');   
+    const popUp: Element | null = document.querySelector('.orderConfirmation');
+    const openPopUpBtn: Element | null =  document.querySelector('.cart__orderBtn');   
 
-
-    const onClosePopUp = () => {
-      popUp?.classList.remove('hidden')
+    const onClosePopUp = (): void => {
+      popUp?.classList.remove('hidden');
     }
     
-    openPopUpBtn?.addEventListener('click', onClosePopUp)
-    return () => {
-      openPopUpBtn?.removeEventListener('click', onClosePopUp)
+    openPopUpBtn?.addEventListener('click', onClosePopUp);
+    return (): void => {
+      openPopUpBtn?.removeEventListener('click', onClosePopUp);
       
     }
-  })
+  });
 
   return (
     <div className='cart'>
@@ -44,7 +43,7 @@ const ShoppingCart: FC = () => {
             <h2 className='cart__orderContainer_totalPrice_total'>Total: </h2>
             <h2 className='cart__orderContainer_totalPrice_amount'>{totalPrice}</h2>
           </div>
-          <button className='cart__orderBtn'>Order</button>
+          <button className='cart__orderBtn btn'>Order</button>
         </section>
         : null 
       }

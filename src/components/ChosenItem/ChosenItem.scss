@@ -1,3 +1,5 @@
+@import '../../styles/global/variables.scss';
+
 .chosenExample {
   display: flex;
   flex-direction: column;
@@ -9,7 +11,7 @@
   &__picture{
     height: 350px;
     width: 350px;
-    border-radius: 50%;
+    border-radius: $border-radius-circle;
     display: flex;
     box-shadow: 18px 17px 30px 1px rgba(0,0,0,0.51);
     -webkit-box-shadow: 18px 17px 30px 1px rgba(0,0,0,0.51);
@@ -34,9 +36,9 @@
     width: 30px;
     height: 30px;
     border-radius: 30%;
-    border: 1px solid black;
-    background-color: white;
-    color: black;
+    border: $border-primary;
+    background-color: $color-secondary;
+    color: $color-primary;
     text-align: center;
   }
 
@@ -44,18 +46,18 @@
     border: none;
     height: 50px;
     width: 50px;
-    font-size: 32px;
-    background-color: white;
+    font-size: $unit * 4;
+    background-color: $color-secondary;
     color: gray;
 
     &:hover {
-      color: black;
+      color: $text-color-primary;
     }
   }
 }
 
 .clicked {
   background-color: black;
-  color: white;
+  color: $text-color-secondary;
 }
 

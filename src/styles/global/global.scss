@@ -1,0 +1,40 @@
+@import './variables.scss';
+
+body {
+  margin: 0;
+  font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+img{
+  display: flex;
+  border-radius: $border-radius-circle;
+  box-shadow: 18px 17px 30px 1px rgba(0,0,0,0.51);
+  -webkit-box-shadow: 18px 17px 30px 1px rgba(0,0,0,0.51);
+  -moz-box-shadow: 18px 17px 30px 1px rgba(0,0,0,0.51);
+  filter: grayscale(100%);
+
+  &:hover {
+  filter: grayscale(0%);
+  }
+}
+
+.card {
+  box-shadow: 0px 0px 24px 3px rgba(0,0,0,0.53);
+  -webkit-box-shadow: 0px 0px 24px 3px rgba(0,0,0,0.53);
+  -moz-box-shadow: 0px 0px 24px 3px rgba(0,0,0,0.53);
+}
+
+.btn {
+  font-size: $unit * 2;
+  border: none;
+  color: $color-secondary;
+  background-color: $color-primary;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}

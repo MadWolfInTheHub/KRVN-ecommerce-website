@@ -6,14 +6,14 @@ import './navigation.scss';
 import { Cart, CartItem } from '../../types/cart';
 import { useSelector } from 'react-redux';
 const Navigation: FC= () => {
-  const cart: CartItem[]= useSelector((state: Cart): CartItem[] => state.cart)
-  const [amountToBuy, setAmountToBuy] = useState(0)
-  let amount = 0
+  const cart: CartItem[]= useSelector((state: Cart): CartItem[] => state.cart);
+  const [amountToBuy, setAmountToBuy] = useState(0);
+  let amount: number = 0;
   cart.forEach(el => amount += el.amount);
 
   useEffect(() => {
-    setAmountToBuy(amount)
-  }, [amount])
+    setAmountToBuy(amount);
+  }, [amount]);
   
   return (
     <nav className='navigation'>

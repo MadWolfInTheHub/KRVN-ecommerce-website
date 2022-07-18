@@ -21,7 +21,7 @@ const OrderConfirmation: FC<Confirmation> = ({totalPrice, cart}) => {
 
 
     const onClosePopUp = (): void => {
-      popUp?.classList.add('hidden')
+      popUp?.classList.add('hidden');
     }
 
     const onOrder = () => {
@@ -57,14 +57,14 @@ const OrderConfirmation: FC<Confirmation> = ({totalPrice, cart}) => {
   
   return (
     <section className='orderConfirmation hidden'>
-      <button className='orderConfirmation__closeBtn'>+</button>
+      <button className='orderConfirmation__closeBtn btn'>+</button>
       <h3>Order number: {orderNumber}</h3>
       <p>Customer: customer</p>
       <p>Address: customer's address</p>
       <p>Delivery time: 4 days</p>
       <p>Total: ${totalPrice}</p>
       <Link to='/customer'>
-        <button className='orderConfirmation__btn'>Confirm</button>
+        <button className='orderConfirmation__btn btn'>Confirm</button>
       </Link>
     </section>
   );

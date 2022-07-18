@@ -4,48 +4,43 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { orderList } from '../../data/orderList';
 import './customer.scss'
 import CustomersOrderCard from '../../elements/CustomersOrderCard/CustomersOrderCard';
-// import { OrderList } from '../../types/cart';
+import { OrderList } from '../../types/cart';
 
 const CustomersPage: FC = () => {
   const [orderType, setOrderType] = useState('Previous Order');
-  const [ordersInProgress, setOrdersInProgress] = useState(orderList.filter(el => el.status.inProgress === true))
-  const [ordersCompleted, setOrdersCompleted] = useState(orderList.filter(el => el.status.completed === true))
- 
+  let ordersInProgress: OrderList[] = orderList.filter(el => el.status.inProgress === true);
+  let ordersCompleted: OrderList[] = orderList.filter(el => el.status.completed === true);
   
-
-
-  useEffect(() => {
-    setOrdersInProgress(orderList.filter(el => el.status.inProgress === true));
-    setOrdersCompleted(orderList.filter(el => el.status.completed === true));
-  }, []);
+  useEffect((): void => {
+    ordersInProgress = orderList.filter(el => el.status.inProgress === true);
+    ordersCompleted = orderList.filter(el => el.status.completed === true);
+  }, [orderType]);
   
-
-
   useEffect(() => {
-    const orderTypeBtn = document.querySelectorAll('.ordersNavBtn')
+    const orderTypeBtn: NodeListOf<Element> = document.querySelectorAll('.ordersNavBtn');
 
     const onToggleOrderType = (e: any): void => {
       switch (e.target.id) {
         case 'previousOrder':
-          setOrderType('Previous Order')
+          setOrderType('Previous Order');
           break;
         case 'ordersInProgress':
-          setOrderType('Orders in progress')
+          setOrderType('Orders in progress');
           break;
         case 'completedOrders':
-          setOrderType("Completed orders")
+          setOrderType("Completed orders");
           break;
         default:
-          setOrderType('Previous Order')
+          setOrderType('Previous Order');
           break;
       }
     }
 
-  orderTypeBtn.forEach(btn => btn.addEventListener('click', onToggleOrderType))
-  return () => {
-      orderTypeBtn.forEach(btn => btn.removeEventListener('click', onToggleOrderType))
+    orderTypeBtn.forEach(btn => btn.addEventListener('click', onToggleOrderType));
+    return () => {
+      orderTypeBtn.forEach(btn => btn.removeEventListener('click', onToggleOrderType));
     }
-  }, [])
+  }, []);
   
 
   return (

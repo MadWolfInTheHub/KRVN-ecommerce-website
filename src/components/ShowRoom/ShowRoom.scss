@@ -1,3 +1,5 @@
+@import '/src/styles/global/variables.scss';
+
 .showRoom {
   position: relative;
   display: flex;
@@ -10,7 +12,7 @@
     width: 100vw;
     background-repeat: no-repeat;
     background-size: cover;
-    top: 5vh;
+    top: $margin-primary;
     position: sticky;
     z-index: 0;
     filter: grayscale(100%);
@@ -18,7 +20,7 @@
   
   &__items {
     padding-top: 50px;
-    padding-bottom: 7vh;
+    padding-bottom: $margin-secondary;
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -27,7 +29,7 @@
     flex-direction: row;
     scroll-behavior: smooth;
     z-index: 1;
-    bottom: 5vh;
+    bottom: $margin-primary;
   }
 }
 
