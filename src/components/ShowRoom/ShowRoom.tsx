@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { items } from '../../data/items';
 import Card from '../../elements/Card/Card';
 import Options from '../../elements/Options/Options';
+import { IIteam } from '../../types/types';
 import './ShowRoom.scss'
 
 
@@ -11,20 +12,20 @@ const ShowRoom: FC = () => {
   const [forHim, setForHim] = useState(true);
   const { pathname, search } = useLocation();
 
-  const searchItems = search.split('&').map(el => el.split('='));
+  const searchItems: string[][] = search.split('&').map(el => el.split('='));
 
-  const setSearchInfo = (infoType: string) => {
+  const setSearchInfo = (infoType: string): string | null => {
     const res: string[][] = searchItems.filter(el => el[0].includes(infoType));
-    return res[0] === undefined ? null : res[0][1]
-  };
+    return res[0] === undefined ? null : res[0][1];
+  }
   
-  let clothes: string | null = setSearchInfo('clothes');
-  let type: string | null = setSearchInfo('type');
+  const clothes: string | null = setSearchInfo('clothes');
+  const type: string | null = setSearchInfo('type');
   // let size: string | null = setSearchInfo('size');
-  let priceFrom: number = Number(setSearchInfo('from'));
-  let priceTo: number = Number(setSearchInfo('to'));
+  const priceFrom: number = Number(setSearchInfo('from'));
+  const priceTo: number = Number(setSearchInfo('to'));
   
-  const filterItemsAccordingToOptions = () => {
+  const filterItemsAccordingToOptions = (): IIteam[] => {
      return items.filter(el => (
       el.category.id === type &&
       (el.price > priceFrom) &&

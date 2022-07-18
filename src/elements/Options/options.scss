@@ -1,4 +1,4 @@
-$color-primary: black;
+@import '/src/styles/global/variables.scss';
 
 .searchBtn {
   position: fixed;
@@ -6,18 +6,14 @@ $color-primary: black;
   right: 3vw;
   width: 50px;
   height: 50px;
-  background-color: black;
-  color: white;
-  border-radius: 50%;
+  border-radius: $border-radius-circle;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: x-large;
   z-index: 2;
   box-shadow: 18px 17px 30px 1px rgba(0,0,0,0.51);
   -webkit-box-shadow: 18px 17px 30px 1px rgba(0,0,0,0.51);
   -moz-box-shadow: 18px 17px 30px 1px rgba(0,0,0,0.51);
-  cursor: pointer;
 }
 
 .options {
@@ -26,14 +22,14 @@ $color-primary: black;
   top: calc(50vh - 150px);
   width: 300px;
   height: 300px;
-  background-color: white;
+  background-color: $color-secondary;
   border-radius: 20%;
   z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
+  border: $border-primary;
   text-align: center;
 
   &__closeBtn {
@@ -41,13 +37,8 @@ $color-primary: black;
     padding: 0;
     width: 20px;
     height: 20px;
-    text-align: center;
-    border-radius: 50%;
-    background-color: black;
-    color: white;
+    border-radius: $border-radius-circle;
     transform: rotate(45deg);
-    cursor: pointer;
-    
   }
 
   &__searchField {
@@ -60,7 +51,7 @@ $color-primary: black;
 
     &_icon {
       text-align: center;
-      font-size: 20px;
+      font-size: $base-font-size;
     }
 
     &_text {
@@ -78,7 +69,7 @@ $color-primary: black;
       width: 100px;
       height: 40px;
       border-radius: 10px;
-      background-color: black;
+      background-color: $color-primary;
       color: white;
       cursor: pointer;   
     }
@@ -87,9 +78,9 @@ $color-primary: black;
       margin: 10px 0;
       width: 40px;
       height: 40px;
-      border-radius: 50%;
+      border-radius: $border-radius-circle;
       text-align: center;
-      background-color: black;
+      background-color: $color-primary;
       color: white;
       cursor: pointer;   
     }
@@ -105,14 +96,7 @@ $color-primary: black;
     width: 200px;
     height: 40px;
     border-radius: 10px;
-    background-color: black;
-    color: white;
-    cursor: pointer;   
   }
-}
-
-.hidden{
-  display: none;
 }
 
 .slider {
@@ -139,7 +123,7 @@ $color-primary: black;
     outline: none;
     transform: translate(0, -50%);
     background: $color-primary;
-    border-radius: 50%;
+    border-radius: $border-radius-circle;
     transition: 120ms background-color;
 
     &:before {
@@ -147,7 +131,7 @@ $color-primary: black;
       position: absolute;
       left: 50%;
       bottom: 100%;
-      font-size: 12px;
+      font-size: $unit * 1.5;
       font-style: italic;
       line-height: 20px;
       padding: 0 5px;

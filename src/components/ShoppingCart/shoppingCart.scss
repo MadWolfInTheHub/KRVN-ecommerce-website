@@ -1,3 +1,5 @@
+@import '../../styles/global/variables.scss';
+
 .cart {
   display: flex;
   flex-direction: column;
@@ -14,15 +16,15 @@
     align-items: center;
     width: 300px;
     height: 300px;
-    border-radius: 50%;
-    background-color: black;
-    font-size: larger;
-    color: white;
+    border-radius: $border-radius-circle;
+    background-color: $color-primary;
+    font-size: $unit * 2;
+    color: $text-color-secondary;
   }
 
   &__orderContainer {
     margin-top: 5vh;
-    width: 100vw;
+    width: 70vw;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -39,14 +41,10 @@
     }
   }
 
-  &__orderBtn {
+  &__orderBtn.btn {
     height: 30px;
     width: 100px;
-    color: white;
-    font-size: large;
     background-color: rgb(190, 49, 49);
-    border: none;
     border-radius: 10px;
-    cursor: pointer;
   }
 }
