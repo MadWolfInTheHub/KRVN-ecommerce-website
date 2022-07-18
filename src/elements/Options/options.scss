@@ -1,4 +1,4 @@
-$color-primary: #00bcd4;
+$color-primary: black;
 
 .searchBtn {
   position: fixed;
@@ -139,7 +139,7 @@ $color-primary: #00bcd4;
     outline: none;
     transform: translate(0, -50%);
     background: $color-primary;
-    border-radius: 4px;
+    border-radius: 50%;
     transition: 120ms background-color;
 
     &:before {

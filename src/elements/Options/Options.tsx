@@ -10,7 +10,7 @@ const sizeOptions: string[] = ['XS', 'S', 'M', 'L']
 
 const Options:FC = () => {
   const pathname: NavigateFunction = useNavigate()
-  const example = '?clothes=&type=&hats&size=S&from=0&to=1000'
+  const example = '?clothes=&type=&hats&size=S&from=0&to=300'
   const searchItems = example.split('&').map(el => el.split('='));
 
   const setSearchInfo = (infoType: string) => {
@@ -116,9 +116,11 @@ const Options:FC = () => {
           <Slider
               min={0}
               max={300}
+              defaultValue={[0, 300]}
               step={5}
               pearling
               minDistance={10}
+              // onChange={rangeSelector}
               onAfterChange={([minValue, maxValue]: number[]) => setPrice([minValue, maxValue])}
             />
             $ {price[0]} - $ {price[1]}
