@@ -1,3 +1,5 @@
+$color-primary: #00bcd4;
+
 .searchBtn {
   position: fixed;
   top: 10vh;
@@ -111,4 +113,81 @@
 
 .hidden{
   display: none;
+}
+
+.slider {
+  min-width: 200px;
+  height: 30px;
+  
+  .track {
+    top: 50%;
+    height: 8px;
+    margin: -4px 0 0;
+    background: rgba($color-primary, 0.25);
+    border-radius: 99px;
+  }
+
+  .track-1 {
+    background: darken($color-primary, 5%);
+  }
+
+  .thumb {
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    outline: none;
+    transform: translate(0, -50%);
+    background: $color-primary;
+    border-radius: 4px;
+    transition: 120ms background-color;
+
+    &:before {
+      content: attr(aria-valuenow);
+      position: absolute;
+      left: 50%;
+      bottom: 100%;
+      font-size: 12px;
+      font-style: italic;
+      line-height: 20px;
+      padding: 0 5px;
+      color: #fff;
+      background: rgba(#000, 0.8);
+      border-radius: 4px;
+      opacity: 0;
+      transform: translate(-50%, -5px) scale(0.5);
+      transform-origin: center 25px;
+      transition: 120ms transform ease-in-out, 120ms opacity;
+      pointer-events: none;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 100%;
+      opacity: 0;
+      border: 3px solid transparent;
+      border-top-color: rgba(#000, 0.8);
+      transform: translate(-50%, 0) scale(0.5);
+      transform-origin: center bottom;
+      transition: 120ms transform ease-in-out, 120ms opacity;
+      pointer-events: none;
+    }
+
+    &:hover,
+    &.active {
+      background: lighten($color-primary, 2%);
+
+      &:before {
+        opacity: 1;
+        transform: translate(-50%, -5px) scale(1);
+      }
+
+      &:after {
+        opacity: 1;
+        transform: translate(-50%, 1px) scale(1);
+      }
+    }
+  }
 }

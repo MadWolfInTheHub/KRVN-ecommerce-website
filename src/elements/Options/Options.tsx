@@ -1,10 +1,8 @@
-import React, {FC, useEffect, useState} from 'react';
+import {FC, useEffect, useState} from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-
-
-import Slider from '@material-ui/core/Slider';
+import Slider from "react-slider";
 import './options.scss';
 
 const clothTypeOptions: string[] = ['hats', 'pants', 'shirts', 'snickers', 'sportswear', 't-shirt', 'underwear']
@@ -30,9 +28,9 @@ const Options:FC = () => {
 
 
   // Changing State when volume increases/decreases
-  const rangeSelector = (event: any, newValue: any): void => {
-    setPrice(newValue)
-  };
+  // const rangeSelector = (event: any, newValue: any): void => {
+  //   setPrice(newValue)
+  // };
 
   useEffect(() => {
     const openBtn = document.querySelector('.searchBtn')
@@ -56,7 +54,7 @@ const Options:FC = () => {
       e.preventDefault()
       onCloseOptionsForm()
       pathname(`?clothes=${searchInput?.value}&type=${typeSelect?.value}&size=${sizeSelect?.value}&from=${price[0]}&to=${price[1]}`)
-
+      // pathname(`?clothes=${searchInput?.value}&type=${typeSelect?.value}&size=${sizeSelect?.value}`)
     }
     
     openBtn?.addEventListener('click', onOpenOptionsForm)
@@ -115,15 +113,13 @@ const Options:FC = () => {
           </select> 
         </div>
         <div className='options__price'>
-
-            <Slider
-              className='options__price_range'
-              value={price}
+          <Slider
               min={0}
               max={300}
               step={5}
-              onChange={rangeSelector}
-              valueLabelDisplay="auto"
+              pearling
+              minDistance={10}
+              onAfterChange={([minValue, maxValue]: number[]) => setPrice([minValue, maxValue])}
             />
             $ {price[0]} - $ {price[1]}
         </div>
