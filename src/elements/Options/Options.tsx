@@ -2,7 +2,9 @@ import React, {FC, useEffect, useState} from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-/* import Slider from '@material-ui/core/Slider'; */
+
+
+import Slider from '@material-ui/core/Slider';
 import './options.scss';
 
 const clothTypeOptions: string[] = ['hats', 'pants', 'shirts', 'snickers', 'sportswear', 't-shirt', 'underwear']
@@ -21,16 +23,16 @@ const Options:FC = () => {
   let clothes: string | null = setSearchInfo('clothes')
   let type: string | null = setSearchInfo('type')
   let size: string | null = setSearchInfo('size')
-/*   let priceFrom: number = Number(setSearchInfo('from'));
-  let priceTo: number = Number(setSearchInfo('to')) */
-/*   const [price, setPrice] = useState([priceFrom, priceTo]) */
+  let priceFrom: number = Number(setSearchInfo('from'));
+  let priceTo: number = Number(setSearchInfo('to'))
+  const [price, setPrice] = useState([priceFrom, priceTo])
   const [cloth, setCloth] = useState(clothes)
 
 
   // Changing State when volume increases/decreases
-/*   const rangeSelector = (event: any, newValue: any): void => {
+  const rangeSelector = (event: any, newValue: any): void => {
     setPrice(newValue)
-  }; */
+  };
 
   useEffect(() => {
     const openBtn = document.querySelector('.searchBtn')
@@ -53,8 +55,8 @@ const Options:FC = () => {
       console.log(e.target)
       e.preventDefault()
       onCloseOptionsForm()
-      // pathname(`?clothes=${searchInput?.value}&type=${typeSelect?.value}&size=${sizeSelect?.value}&from=${price[0]}&to=${price[1]}`)
-      pathname(`?clothes=${searchInput?.value}&type=${typeSelect?.value}&size=${sizeSelect?.value}`)
+      pathname(`?clothes=${searchInput?.value}&type=${typeSelect?.value}&size=${sizeSelect?.value}&from=${price[0]}&to=${price[1]}`)
+
     }
     
     openBtn?.addEventListener('click', onOpenOptionsForm)
@@ -113,7 +115,8 @@ const Options:FC = () => {
           </select> 
         </div>
         <div className='options__price'>
-{/*             <Slider
+
+            <Slider
               className='options__price_range'
               value={price}
               min={0}
@@ -121,8 +124,8 @@ const Options:FC = () => {
               step={5}
               onChange={rangeSelector}
               valueLabelDisplay="auto"
-            /> */}
-{/*             $ {price[0]} - $ {price[1]} */}
+            />
+            $ {price[0]} - $ {price[1]}
         </div>
         <button className='options__findBtn'>Find</button>
       </form>
