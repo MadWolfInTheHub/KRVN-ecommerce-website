@@ -4,16 +4,16 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { orderList } from '../../data/orderList';
 import './customer.scss'
 import CustomersOrderCard from '../../elements/CustomersOrderCard/CustomersOrderCard';
-import { OrderList } from '../../types/cart';
 
 const CustomersPage: FC = () => {
   const [orderType, setOrderType] = useState('Previous Order');
-  let ordersInProgress: OrderList[] = orderList.filter(el => el.status.inProgress === true);
-  let ordersCompleted: OrderList[] = orderList.filter(el => el.status.completed === true);
+  const [ordersInProgress, setOrdersInProgress] = useState(orderList.filter(el => el.status.inProgress === true))
+  const [ordersCompleted, setOrdersCompleted] = useState(orderList.filter(el => el.status.completed === true))
+
   
   useEffect((): void => {
-    ordersInProgress = orderList.filter(el => el.status.inProgress === true);
-    ordersCompleted = orderList.filter(el => el.status.completed === true);
+    setOrdersInProgress(orderList.filter(el => el.status.inProgress === true));
+    setOrdersCompleted(orderList.filter(el => el.status.completed === true));
   }, [orderType]);
   
   useEffect(() => {
