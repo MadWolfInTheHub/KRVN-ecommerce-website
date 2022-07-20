@@ -28,7 +28,7 @@ const Navigation: FC= () => {
     const menu = document.querySelector('.navigation__menu');
 
     const toggleMenu = () => {
-      setShowMenu(!showMenu);
+      window.innerWidth < 800 ? setShowMenu(!showMenu) : setShowMenu(showMenu);
     }
 
     menuBtn?.addEventListener('click', toggleMenu)
