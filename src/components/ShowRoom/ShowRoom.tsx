@@ -35,6 +35,7 @@ const ShowRoom: FC = () => {
 
   useEffect((): void => {
     setForHim(pathname.includes('forHim') ? true : false)
+    window.scrollTo(0, 0);
   }, [pathname]);
 
   const himOrHer: string = forHim ? 'forHim' : 'forHer';

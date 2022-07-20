@@ -1,15 +1,44 @@
 import React, { FC, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom'
-import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 import './navigation.scss';
 import { Cart, CartItem } from '../../types/cart';
 import { useSelector } from 'react-redux';
 const Navigation: FC= () => {
   const cart: CartItem[]= useSelector((state: Cart): CartItem[] => state.cart);
   const [amountToBuy, setAmountToBuy] = useState(0);
+  const [showMenu, setShowMenu] = useState(true)
   let amount: number = 0;
   cart.forEach(el => amount += el.amount);
+  
+  useEffect(() => {
+    const handleWindowResize = () => window.innerWidth > 800 ? setShowMenu(true): setShowMenu(false);
+
+    window.addEventListener('resize', handleWindowResize);
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    }
+  }, [])
+  
+
+  useEffect(() => {
+    const menuBtn = document.querySelector('.navigation__menu_btn');
+    const menu = document.querySelector('.navigation__menu');
+
+    const toggleMenu = () => {
+      setShowMenu(!showMenu);
+    }
+
+    menuBtn?.addEventListener('click', toggleMenu)
+    menu?.addEventListener('click', toggleMenu)
+    return () => {
+      menuBtn?.removeEventListener('click', toggleMenu)
+      menu?.removeEventListener('click', toggleMenu)
+    }
+  }, [showMenu])
+  
 
   useEffect(() => {
     setAmountToBuy(amount);
@@ -17,11 +46,13 @@ const Navigation: FC= () => {
   
   return (
     <nav className='navigation'>
-      <NavLink to='/'>Home</NavLink>
-      <NavLink to='/forHim'>For Him</NavLink>
-      <NavLink to='/forHer'>For Her</NavLink>
-      <div/>
-      <NavLink to='/customer'>Customer</NavLink>
+      <FontAwesomeIcon icon={faBars} className='navigation__menu_btn'/>
+      <div className={`navigation__menu ${showMenu ? '' : 'hidden'}`}>
+        <NavLink className='navigation__menu_link' to='/'>Home</NavLink>
+        <NavLink className='navigation__menu_link' to='/forHim'>For Him</NavLink>
+        <NavLink className='navigation__menu_link' to='/forHer'>For Her</NavLink>
+        <NavLink className='navigation__menu_link' to='/customer'>Customer</NavLink>
+      </div>
       <div className="navigation__cart">
       <NavLink to="/cart">
         <FontAwesomeIcon icon={faCartArrowDown}/>

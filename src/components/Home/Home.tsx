@@ -1,9 +1,15 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import './home.scss'
 import { Link } from 'react-router-dom';
 // import { fetchItems } from '../../service/flightsGateway'
 
 const Home: FC = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
+  
+
   return (
     <>
       <section className="mainPage__cover">

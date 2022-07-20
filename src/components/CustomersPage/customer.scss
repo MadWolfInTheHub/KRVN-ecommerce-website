@@ -1,4 +1,5 @@
 @import '../../styles/global/variables.scss';
+@import '../../styles/global/breakpoints.scss';
 
 .customer {
   display: flex;
@@ -14,6 +15,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @include small-screen {
+    margin-top: 20vh;
+    flex-direction: column;
+  }
 
   &__userInfo {
     display: flex;
@@ -47,6 +53,10 @@
       margin: 10px;
       display: flex;
       justify-content: space-between;
+
+      @include small-screen {
+        justify-content: space-around;
+      }
     }
     
     &_previousOrders {

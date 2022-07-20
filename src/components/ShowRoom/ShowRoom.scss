@@ -25,7 +25,7 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    background: white;
+    background: $color-secondary;
     flex-direction: row;
     scroll-behavior: smooth;
     z-index: 1;
@@ -35,11 +35,11 @@
 
 .forHim {
   background-image: url(../../../public/model-man.jpeg);
+  background-position-x: right;
 
 }
 
 .forHer {
   background-image: url(../../../public/background_5e40e1644c240.jpeg);
   background-position: center;
-
 }

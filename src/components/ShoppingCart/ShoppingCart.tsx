@@ -41,7 +41,7 @@ const ShoppingCart: FC = () => {
         <section className='cart__orderContainer'>
           <div className='cart__orderContainer_totalPrice'>
             <h2 className='cart__orderContainer_totalPrice_total'>Total: </h2>
-            <h2 className='cart__orderContainer_totalPrice_amount'>{totalPrice}</h2>
+            <h2 className='cart__orderContainer_totalPrice_amount'>$ {totalPrice}</h2>
           </div>
           <button className='cart__orderBtn btn'>Order</button>
         </section>
