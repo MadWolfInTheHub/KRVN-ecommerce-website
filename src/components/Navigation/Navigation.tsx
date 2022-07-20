@@ -1,11 +1,11 @@
 import React, { FC, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom'
+import { useSelector } from 'react-redux';
+import { Cart, CartItem } from '../../types/cart';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import './navigation.scss';
-import { Cart, CartItem } from '../../types/cart';
-import { useSelector } from 'react-redux';
 const Navigation: FC= () => {
   const cart: CartItem[]= useSelector((state: Cart): CartItem[] => state.cart);
   const [amountToBuy, setAmountToBuy] = useState(0);
