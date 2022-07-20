@@ -61,6 +61,7 @@
 
   &__type {
     width: 200px;
+    font-size: $unit * 1.5;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -69,6 +70,7 @@
       width: 100px;
       height: 40px;
       border-radius: 10px;
+      
       background-color: $color-primary;
       color: white;
       cursor: pointer;   
