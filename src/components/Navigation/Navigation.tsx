@@ -9,12 +9,12 @@ import { useSelector } from 'react-redux';
 const Navigation: FC= () => {
   const cart: CartItem[]= useSelector((state: Cart): CartItem[] => state.cart);
   const [amountToBuy, setAmountToBuy] = useState(0);
-  const [showMenu, setShowMenu] = useState(true)
+  const [showMenu, setShowMenu] = useState(window.innerWidth > 800 ? true : false);
   let amount: number = 0;
   cart.forEach(el => amount += el.amount);
   
   useEffect(() => {
-    const handleWindowResize = () => window.innerWidth > 800 ? setShowMenu(true): setShowMenu(false);
+    const handleWindowResize = () => window.innerWidth > 800 ? setShowMenu(true) : setShowMenu(false);
 
     window.addEventListener('resize', handleWindowResize);
     return () => {
