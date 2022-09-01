@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { orderList } from '../../data/orderList';
 import './customer.scss'
-import CustomersOrderCard from '../../elements/CustomersOrderCard/CustomersOrderCard';
+import CustomersOrderCard from './CustomersOrderCard';
 
 const CustomersPage: FC = () => {
   const [orderType, setOrderType] = useState('Previous Order');
@@ -72,7 +72,7 @@ const CustomersPage: FC = () => {
               <>
                 Order Id: {orderList[0].orderId}
                { orderList[0].orderItems.map(el => (
-                  <CustomersOrderCard el={el} />
+                  <CustomersOrderCard el={el} key={el.orderId} />
                 ))}
                 <h4 className='customer-container__userOrders_previousOrders-price'>Total: {orderList[0].price}</h4>
               </>
@@ -85,7 +85,7 @@ const CustomersPage: FC = () => {
                 <>
                   Order Id: {el.orderId}
                   {el.orderItems.map(el => (
-                    <CustomersOrderCard el={el}/>
+                    <CustomersOrderCard el={el}  />
                   ))}
                     <h4 className='customer-container__userOrders_previousOrders-price'>Total: {el.price}</h4>
                 </>
@@ -99,7 +99,7 @@ const CustomersPage: FC = () => {
                 <>
                   Order Id: {el.orderId}
                   {el.orderItems.map(el => (
-                    <CustomersOrderCard el={el}/>
+                    <CustomersOrderCard el={el} key={el.orderId} />
                   ))}
                   <h4 className='customer-container__userOrders_previousOrders-price'>Total: {el.price}</h4>
                 </>
