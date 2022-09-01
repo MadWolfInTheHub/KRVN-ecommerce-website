@@ -1,8 +1,8 @@
 import React, { FC, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import CartCard from '../../elements/CartCard/CartCard';
+import CartCard from './CartCard';
 import { CartItem, Cart } from '../../types/cart';
-import OrderConfirmation from '../../elements/OrderConfirmation/OrderConfirmation';
+import OrderConfirmation from './OrderConfirmation';
 import "./shoppingCart.scss"
 
 const ShoppingCart: FC = () => {
@@ -33,7 +33,7 @@ const ShoppingCart: FC = () => {
        :
        cart.map(el => (
 
-          <CartCard item={el.item} size={el.size} orderId={el.orderId} amount={el.amount}/>
+          <CartCard item={el.item} size={el.size} orderId={el.orderId} amount={el.amount} key={Math.random()}/>
         ))
       } 
       {

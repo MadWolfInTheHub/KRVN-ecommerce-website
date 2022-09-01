@@ -3,8 +3,8 @@ import { NavigateFunction, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Slider from "react-slider";
-import './options.scss';
 import { clothTypeOptions, sizeOptions } from '../../data/orderList';
+import './Options.scss';
 
 const Options:FC = () => {
   const { search } = useLocation();

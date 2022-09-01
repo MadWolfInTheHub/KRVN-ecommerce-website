@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from 'react';
-import "./cartCard.scss"
+import "./CartCard.scss"
 import { Link } from 'react-router-dom';
 import { deleteItem, toggleAmount } from '../../store/reducers/cartReducer';
 import { useDispatch } from 'react-redux';

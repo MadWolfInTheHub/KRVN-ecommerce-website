@@ -7,7 +7,6 @@ export interface CartItem {
   amount: number;
 }
 
-
 export interface Cart {
   cart: CartItem[];
 }

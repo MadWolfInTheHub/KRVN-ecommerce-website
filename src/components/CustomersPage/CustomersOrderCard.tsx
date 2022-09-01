@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './customersOrderCard.scss'
 
-const CustomersOrderCard = ({el, orderId}: any) => {
+const CustomersOrderCard = ({el}: any) => {
 
   return (
-    <div className='order'>
+    <div className='order' key={el.orderId} >
       <div className='order__amount'>{el.amount}</div>
       <Link to={`/${el.item.category.name}/${el.item.id}`}>
         <img className='order__picture' src={el.item.image} alt="pic"/>

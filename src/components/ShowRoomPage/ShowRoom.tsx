@@ -2,8 +2,8 @@
 import React, { FC, useState, useEffect} from 'react';
 import { useLocation } from 'react-router-dom';
 import { items } from '../../data/items';
-import Card from '../../elements/Card/Card';
-import Options from '../../elements/Options/Options';
+import Card from './Card';
+import Options from './Options';
 import { IIteam } from '../../types/types';
 import './ShowRoom.scss'
 

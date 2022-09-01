@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom'
 import { Item } from '../../types/types';
-import './card.scss'
+import './Card.scss'
 
 
 

@@ -17,7 +17,6 @@ const ChosenItem = () => {
   const item: IIteam = items.filter(item => item.id === itemId)[0];
 
 
-  
   const cart: CartItem[]= useSelector((state: Cart): CartItem[] => state.cart);
   const [amount] = useState(1);
   
@@ -26,7 +25,7 @@ const ChosenItem = () => {
   
   useEffect(() => {
     const sizeBtn: NodeListOf<Element> = document.querySelectorAll('[data-size]');
-    const addToCartBtn: Element | null = document.querySelector('[data-id]');;
+    const addToCartBtn: Element | null = document.querySelector('[data-id]');
     const onToggleSize: any= (e: any): void => {
       
       if(e.target.outerHTML.includes('data-size')) {
