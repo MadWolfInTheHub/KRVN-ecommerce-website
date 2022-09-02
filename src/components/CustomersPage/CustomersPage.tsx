@@ -15,34 +15,24 @@ const CustomersPage: FC = () => {
     setOrdersInProgress(orderList.filter(el => el.status.inProgress === true));
     setOrdersCompleted(orderList.filter(el => el.status.completed === true));
   }, [orderType]);
-  
-  useEffect(() => {
-    const orderTypeBtn: NodeListOf<Element> = document.querySelectorAll('.ordersNavBtn');
 
-    const onToggleOrderType = (e: any): void => {
-      switch (e.target.id) {
-        case 'previousOrder':
-          setOrderType('Previous Order');
-          break;
-        case 'ordersInProgress':
-          setOrderType('Orders in progress');
-          break;
-        case 'completedOrders':
-          setOrderType("Completed orders");
-          break;
-        default:
-          setOrderType('Previous Order');
-          break;
-      }
+  const onToggleOrderType = (e: any): void => {
+    switch (e.target.id) {
+      case 'previousOrder':
+        setOrderType('Previous Order');
+        break;
+      case 'ordersInProgress':
+        setOrderType('Orders in progress');
+        break;
+      case 'completedOrders':
+        setOrderType("Completed orders");
+        break;
+      default:
+        setOrderType('Previous Order');
+        break;
     }
-
-    orderTypeBtn.forEach(btn => btn.addEventListener('click', onToggleOrderType));
-    return () => {
-      orderTypeBtn.forEach(btn => btn.removeEventListener('click', onToggleOrderType));
-    }
-  }, []);
+  }
   
-
   return (
     <div className='customer'>
       <header className='customer-header'>
@@ -60,9 +50,9 @@ const CustomersPage: FC = () => {
 
         <section className='customer-container__userOrders'>
           <nav className='customer-container__userOrders_navigation'>
-            <button id='previousOrder' className=' ordersNavBtn' >Last Order</button>
-            <button id='ordersInProgress' className='ordersNavBtn'>Orders in progress</button>
-            <button id='completedOrders' className='ordersNavBtn'>Completed orders</button>
+            <button onClick={(e) => onToggleOrderType(e)} id='previousOrder' className=' ordersNavBtn' >Last Order</button>
+            <button onClick={(e) => onToggleOrderType(e)} id='ordersInProgress' className='ordersNavBtn'>Orders in progress</button>
+            <button onClick={(e) => onToggleOrderType(e)} id='completedOrders' className='ordersNavBtn'>Completed orders</button>
           </nav>
           <div className='customer-container__userOrders_previousOrders'>
             <h3>{orderType}: </h3> 

@@ -1,29 +1,53 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import CartCard from './CartCard';
-import { CartItem, Cart } from '../../types/cart';
-import OrderConfirmation from './OrderConfirmation';
+import { CartItem, Cart, OrderList } from '../../types/cart';
 import "./shoppingCart.scss"
+import { orderList } from '../../data/orderList';
+import { clearCart } from '../../store/reducers/cartReducer';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 
 const ShoppingCart: FC = () => {
-  const cart: CartItem[]= useSelector((state: Cart): CartItem[] => state.cart)
-  
+  const orderNumber = Number((Math.random() * 1000).toFixed(0));
+  const cart: CartItem[] = useSelector((state: Cart): CartItem[] => state.cart)
   const totalPrice: number = cart.reduce((acc, el): number => { return acc + (el.item.price * el.amount)}, 0)
 
-  useEffect(() => {
-    const popUp: Element | null = document.querySelector('.orderConfirmation');
-    const openPopUpBtn: Element | null =  document.querySelector('.cart__orderBtn');   
+  const popUp = useRef<HTMLTableSectionElement>(null);
+  
+  const dispatch = useDispatch();
 
-    const onClosePopUp = (): void => {
-      popUp?.classList.remove('hidden');
-    }
-    
-    openPopUpBtn?.addEventListener('click', onClosePopUp);
-    return (): void => {
-      openPopUpBtn?.removeEventListener('click', onClosePopUp);
-      
-    }
-  });
+  const onOpenPopUp = (): void => {
+    popUp?.current?.classList.remove('hidden');
+  }
+
+  const onClosePopUp = (): void => {
+    popUp?.current?.classList.add('hidden');
+  }
+
+  const onOrder = () => {
+    const newOrder: OrderList = {
+      orderId: orderNumber,
+      orderItems: cart,
+      price: totalPrice,
+      status: {
+        inProgress: true,
+        completed: false,
+        customerRefusal: false,
+        sellerRefusal: false,
+      },
+      payed: false,
+      customer: {
+        id: 1,
+        name: 'user',
+        address: 'country, city, street, building',
+      }
+    };
+    orderList.unshift(newOrder);
+    popUp?.current?.classList.add('hidden');
+    dispatch(clearCart());
+  }
 
   return (
     <div className='cart'>
@@ -43,12 +67,21 @@ const ShoppingCart: FC = () => {
             <h2 className='cart__orderContainer_totalPrice_total'>Total: </h2>
             <h2 className='cart__orderContainer_totalPrice_amount'>$ {totalPrice}</h2>
           </div>
-          <button className='cart__orderBtn btn'>Order</button>
+          <button className='cart__orderBtn btn' onClick={onOpenPopUp}>Order</button>
         </section>)
       }
-      <OrderConfirmation 
-        totalPrice={totalPrice} 
-        cart={cart}/>
+      <section ref={popUp} className='orderConfirmation hidden'>
+        <button className='orderConfirmation__closeBtn btn' onClick={onClosePopUp}>+</button>
+        <h3>Order number: {orderNumber}</h3>
+        <p>Customer: customer</p>
+        <p>Address: customer's address</p>
+        <p>Delivery time: 4 days</p>
+        <p>Total: ${totalPrice}</p>
+        <Link to='/customer'>
+          <button className='orderConfirmation__btn btn' onClick={onOrder}>Confirm</button>
+        </Link>
+      </section>
+        
       </div>
   );
 };

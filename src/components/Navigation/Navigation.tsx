@@ -21,24 +21,10 @@ const Navigation: FC= () => {
       window.removeEventListener('resize', handleWindowResize);
     }
   }, [])
-  
 
-  useEffect(() => {
-    const menuBtn = document.querySelector('.navigation__menu_btn');
-    const menu = document.querySelector('.navigation__menu');
-
-    const toggleMenu = () => {
-      window.innerWidth < 800 ? setShowMenu(!showMenu) : setShowMenu(showMenu);
-    }
-
-    menuBtn?.addEventListener('click', toggleMenu)
-    menu?.addEventListener('click', toggleMenu)
-    return () => {
-      menuBtn?.removeEventListener('click', toggleMenu)
-      menu?.removeEventListener('click', toggleMenu)
-    }
-  }, [showMenu])
-  
+  const toggleMenu = () => {
+    window.innerWidth < 800 ? setShowMenu(!showMenu) : setShowMenu(showMenu);
+  }
 
   useEffect(() => {
     setAmountToBuy(amount);
@@ -46,8 +32,8 @@ const Navigation: FC= () => {
   
   return (
     <nav className='navigation'>
-      <FontAwesomeIcon icon={faBars} className='navigation__menu_btn'/>
-      <div className={`navigation__menu ${showMenu ? '' : 'hidden'}`}>
+      <FontAwesomeIcon icon={faBars} className='navigation__menu_btn' onClick={toggleMenu}/>
+      <div className={`navigation__menu ${showMenu ? '' : 'hidden'}`} onClick={toggleMenu}>
         <NavLink className='navigation__menu_link' to='/'>Home</NavLink>
         <NavLink className='navigation__menu_link' to='/forHim'>For Him</NavLink>
         <NavLink className='navigation__menu_link' to='/forHer'>For Her</NavLink>

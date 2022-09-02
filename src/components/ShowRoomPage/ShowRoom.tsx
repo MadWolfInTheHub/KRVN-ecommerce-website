@@ -7,7 +7,6 @@ import Options from './Options';
 import { IIteam } from '../../types/types';
 import './ShowRoom.scss'
 
-
 const ShowRoom: FC = () => {
   const [forHim, setForHim] = useState(true);
   const { pathname, search } = useLocation();
@@ -21,7 +20,6 @@ const ShowRoom: FC = () => {
   
   const clothes: string | null = setSearchInfo('clothes');
   const type: string | null = setSearchInfo('type');
-  // let size: string | null = setSearchInfo('size');
   const priceFrom: number = Number(setSearchInfo('from'));
   const priceTo: number = Number(setSearchInfo('to'));
   

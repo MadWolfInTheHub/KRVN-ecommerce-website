@@ -1,4 +1,4 @@
-import {FC, useEffect, useState} from 'react';
+import {FC, useRef, useState} from 'react';
 import { NavigateFunction, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -24,59 +24,45 @@ const Options:FC = () => {
   const [price, setPrice] = useState([priceFrom, priceTo]);
   const [cloth, setCloth] = useState(clothes);
 
-  useEffect(() => {
-    const openBtn: Element | null = document.querySelector('.searchBtn');
-    const closeBtn: Element | null = document.querySelector('.options__closeBtn');
+  const form= useRef<HTMLFormElement>(null)
+  const searchInput = useRef<HTMLInputElement>(null)
+  const typeSelect = useRef<HTMLSelectElement>(null)
+  const sizeSelect = useRef<HTMLSelectElement>(null)
 
-    const onOpenOptionsForm = (): void => {
-      form?.classList.remove('hidden');
-    }
-
-    const onCloseOptionsForm = (): void => {
-      form?.classList.add('hidden');
-    }
-
-    const form: Element | null = document.querySelector('.options');
-    const searchInput: HTMLInputElement | null = document.querySelector('.options__searchField_text');
-    const typeSelect: HTMLInputElement | null = document.querySelector('.options__type_clothes');
-    const sizeSelect: HTMLInputElement | null = document.querySelector('.options__type_size');
-
-    const onFormSubmit = (e:any): void => {
-      e.preventDefault();
-      onCloseOptionsForm();
-      pathname(`?clothes=${searchInput?.value}&type=${typeSelect?.value}&size=${sizeSelect?.value}&from=${price[0]}&to=${price[1]}`);
-    }
-    
-    openBtn?.addEventListener('click', onOpenOptionsForm);
-    closeBtn?.addEventListener('click', onCloseOptionsForm);
-    form?.addEventListener('submit', onFormSubmit);
-    return (): void => {
-      openBtn?.removeEventListener('click', onOpenOptionsForm);
-      closeBtn?.removeEventListener('click', onCloseOptionsForm);
-      form?.removeEventListener('submit', onFormSubmit);
-    };
-  });
+  const onOpenOptionsForm = (): void => {
+    form?.current?.classList.remove('hidden')
+  }
   
+  const onCloseOptionsForm = (): void => {
+    form?.current?.classList.add('hidden');
+  }
+  
+  const onFormSubmit = (e:any): void => {
+    e.preventDefault();
+    onCloseOptionsForm();
+    pathname(`?clothes=${searchInput?.current?.value}&type=${typeSelect?.current?.value}&size=${sizeSelect?.current?.value}&from=${price[0]}&to=${price[1]}`);
+  }
   
   return (
     <>
-      <button className='searchBtn btn'>
+      <button className='searchBtn btn' onClick={onOpenOptionsForm}>
         <FontAwesomeIcon icon={faSearch}/>
       </button>
 
-      <form className='options hidden'>
-        <div className='options__closeBtn btn'>+</div>
+      <form ref={form} className='options hidden' onSubmit={(e) => onFormSubmit(e)}>
+        <div className='options__closeBtn btn' onClick={onCloseOptionsForm}>+</div>
         <h4 className='options__header'>What are you looking for?</h4>
         <div className='options__searchField'>
           <FontAwesomeIcon className='options__searchField_icon' icon={faSearch}/>
-          <input 
+          <input
+            ref={searchInput}
             className='options__searchField_text' 
             type="search" 
             value={cloth === null ? '' : cloth} 
             onChange={(e) => setCloth(e.target.value)}/>
         </div>
         <div className='options__type'>
-          <select className='options__type_clothes' id="cloth-types" name="cloth-types">
+          <select ref={typeSelect} className='options__type_clothes' id="cloth-types" name="cloth-types">
             {
               clothTypeOptions.map(el => (
                 <option 
@@ -88,7 +74,7 @@ const Options:FC = () => {
               ))
             }
           </select>
-          <select className='options__type_size' id="cloth-types" name="cloth-types">
+          <select ref={sizeSelect} className='options__type_size' id="cloth-types" name="cloth-types">
             {
               sizeOptions.map(type => (
                 <option 
