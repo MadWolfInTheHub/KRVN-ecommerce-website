@@ -1,0 +1,85 @@
+@import '../../../styles/global/variables.scss';
+@import '../../../styles/global/breakpoints.scss';
+
+.customer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 90vh;
+}
+
+.customer-container {
+  margin-top: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include small-screen {
+    margin-top: 20vh;
+    flex-direction: column;
+  }
+
+  &__userInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &_img {
+      width: 200px;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: $color-primary;
+      color: $text-color-secondary;
+      border-radius: $border-radius-circle;
+      font-size: $unit * 16;
+    }
+  }
+
+  &__userOrders {
+    width: 500px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &_navigation {
+      width: 400px;
+      margin: 10px;
+      display: flex;
+      justify-content: space-between;
+
+      @include small-screen {
+        justify-content: space-around;
+      }
+    }
+    
+    &_previousOrders {
+      padding: 0 30px;
+      border: $border-primary;
+      border-radius: 20px;
+      overflow: scroll;
+      scroll-behavior: smooth;
+      cursor: all-scroll;
+    }
+    
+    &_previousOrders-price {
+      text-align: right;
+    }
+
+  }
+}
+
+.ordersNavBtn {
+  background-color: $color-primary;
+  color: $color-secondary;
+  height: 30px;
+  border-radius: 10px;
+  font-size: $unit * 1.5;
+  cursor: pointer;
+}

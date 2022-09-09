@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes} from 'react-router-dom';
-import About from './components/AboutPage/About';
-import ChosenItem from './components/ChosenItemPage/ChosenItem';
-import CustomersPage from './components/CustomersPage/CustomersPage';
-import Footer from './components/Footer/Footer';
-import Home from './components/HomePage/Home';
-import Navigation from './components/Navigation/Navigation';
-import ShoppingCart from './components/ShoppingCartPage/ShoppingCart';
-import ShowRoom from './components/ShowRoomPage/ShowRoom';
+import About from './features/about/components/About';
+import ChosenItem from './features/item/components/ChosenItem';
+import CustomersPage from './features/customer/components/CustomersPage';
+import Footer from './features/footer/components/Footer';
+import Home from './features/home/components/Home';
+import Navigation from './features/navigation/components/Navigation';
+import ShoppingCart from './features/cart/components/ShoppingCart';
+import ShowRoom from './features/products/components/ShowRoom';
 
 function App() {
   return (

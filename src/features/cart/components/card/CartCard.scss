@@ -1,0 +1,80 @@
+@import '../../../../styles/global/variables.scss';
+@import '../../../../styles/global/breakpoints.scss';
+
+
+.cartExample {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 10vh;
+  width: 60vw;
+
+  @include small-screen {
+    width: 100%;
+  }
+
+  &:first-child {
+  margin-top: 5vh;
+  }
+
+  &__picture{
+    height: 70px;
+    width: 70px;
+  }
+
+  &__description {
+    text-align: center;
+    padding: 0 10px;
+    width: 20vw;
+  }
+
+  &__price {
+    width: 10vw;
+    font-size: $unit * 2.5;
+  }
+
+  &__amount {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &_number {
+      padding: 0 5px;
+    }
+  }
+
+  &__size {
+    width: 30px;
+    height: 30px;
+    border-radius: 30%;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    border: $border-primary;
+    background-color: $color-secondary;
+    color: $text-color-primary;
+  }
+
+  &__deleteBtn.btn{
+    width: 35px;
+    height: 35px;
+    background-color: gray;
+    border-radius: $border-radius-circle;
+    font-size: $unit * 3;
+    transform: rotate(45deg);
+
+    &:hover {
+      color: $text-color-primary;
+    }
+  }
+}
+
+.amount-btn.btn {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  font-size: $unit * 2.5;
+  border-radius: $border-radius-circle;
+}
