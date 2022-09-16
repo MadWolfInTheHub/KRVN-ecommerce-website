@@ -1,29 +1,30 @@
-import React, { FC, useRef } from 'react';
+import React, { FC, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import CartCard from './card/CartCard';
 import { CartItem, Cart, OrderList } from '../../../types/cart';
 import "./shoppingCart.scss"
 import { orderList } from '../../../data/orderList';
-import { clearCart } from '../../../store/reducers/cartReducer';
+import { clearCart } from './reducers/cartReducer';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 
 const ShoppingCart: FC = () => {
+  const [showForm, setShowFrom] = useState(false) 
   const orderNumber = Number((Math.random() * 1000).toFixed(0));
   const cart: CartItem[] = useSelector((state: Cart): CartItem[] => state.cart)
-  const totalPrice: number = cart.reduce((acc, el): number => { return acc + (el.item.price * el.amount)}, 0)
+  const totalPrice: number = cart.reduce((acc, el): number => acc + (el.item.price * el.amount), 0)
 
-  const popUp = useRef<HTMLTableSectionElement>(null);
+  const popUp = useRef<HTMLFormElement>(null);
   
   const dispatch = useDispatch();
 
   const onOpenPopUp = (): void => {
-    popUp?.current?.classList.remove('hidden');
+    setShowFrom(true);
   }
 
   const onClosePopUp = (): void => {
-    popUp?.current?.classList.add('hidden');
+    setShowFrom(false);
   }
 
   const onOrder = () => {
@@ -45,7 +46,7 @@ const ShoppingCart: FC = () => {
       }
     };
     orderList.unshift(newOrder);
-    popUp?.current?.classList.add('hidden');
+    setShowFrom(false);
     dispatch(clearCart());
   }
 
@@ -70,18 +71,21 @@ const ShoppingCart: FC = () => {
           <button className='cart__orderBtn btn' onClick={onOpenPopUp}>Order</button>
         </section>)
       }
-      <section ref={popUp} className='orderConfirmation hidden'>
-        <button className='orderConfirmation__closeBtn btn' onClick={onClosePopUp}>+</button>
-        <h3>Order number: {orderNumber}</h3>
-        <p>Customer: customer</p>
-        <p>Address: customer's address</p>
-        <p>Delivery time: 4 days</p>
-        <p>Total: ${totalPrice}</p>
-        <Link to='/customer'>
-          <button className='orderConfirmation__btn btn' onClick={onOrder}>Confirm</button>
-        </Link>
-      </section>
-        
+      { showForm &&
+        (
+          <form ref={popUp} className='orderConfirmation'>
+          <button className='orderConfirmation__closeBtn btn' onClick={onClosePopUp}>+</button>
+          <h3>Order number: {orderNumber}</h3>
+          <p>Customer: customer</p>
+          <p>Address: customer's address</p>
+          <p>Delivery time: 4 days</p>
+          <p>Total: ${totalPrice}</p>
+          <Link to='/customer'>
+            <button className='orderConfirmation__btn btn' onSubmit={onOrder}>Confirm</button>
+          </Link>
+        </form>
+        )
+      } 
       </div>
   );
 };

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { CartItem } from "../../types/cart";
+import { CartItem } from "../../../../types/cart";
 
 export const cartItem = createSlice({
   name:'cart',
@@ -13,15 +13,23 @@ export const cartItem = createSlice({
     },
     setNewAmount: (state: CartItem[], action: any)=> { 
       const { itemId, itemSize, amount } = action.payload;
-      state.forEach(el => {
+      // eslint-disable-next-line
+      state.map(el => {
        if(el.item.id === itemId && el.size === itemSize) el.amount += amount; 
       })
     },
-    toggleAmount: (state: CartItem[], action: any)=> { 
-      const { orderId, increase, decrease } = action.payload;
-      
-      state.forEach(el => {
-        if(el.orderId === orderId) increase ? el.amount += increase : el.amount += decrease; 
+    increaseAmount: (state: CartItem[], action: any) => {
+      const { orderId } = action.payload;
+      // eslint-disable-next-line
+      state.map(el => {
+        if(el.orderId === orderId) el.amount += 1
+      })
+    },
+    decreaseAmount: (state: CartItem[], action: any) => {
+      const { orderId } = action.payload;
+      // eslint-disable-next-line
+      state.map(el => {
+        if(el.orderId === orderId) el.amount -= 1
       })
     },
     clearCart: (state: CartItem[]): never [] => {
@@ -31,6 +39,6 @@ export const cartItem = createSlice({
 })
 
 
-export const { addItem, deleteItem, setNewAmount, toggleAmount, clearCart } = cartItem.actions;
+export const { addItem, deleteItem, setNewAmount, increaseAmount, decreaseAmount, clearCart } = cartItem.actions;
 
 export default cartItem.reducer;

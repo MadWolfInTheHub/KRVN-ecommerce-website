@@ -11,7 +11,7 @@ const Navigation: FC= () => {
   const [amountToBuy, setAmountToBuy] = useState(0);
   const [showMenu, setShowMenu] = useState(window.innerWidth > 800 ? true : false);
   let amount: number = 0;
-  cart.forEach(el => amount += el.amount);
+  cart.map(el => amount += el.amount);
   
   useEffect(() => {
     const handleWindowResize = () => window.innerWidth > 800 ? setShowMenu(true) : setShowMenu(false);

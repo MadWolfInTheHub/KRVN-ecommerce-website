@@ -5,7 +5,7 @@ import { IIteam } from '../../../types/types';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from 'react-redux';
-import { addItem, setNewAmount } from '../../../store/reducers/cartReducer';
+import { addItem, setNewAmount } from '../../cart/components/reducers/cartReducer';
 import { Cart, CartItem } from '../../../types/cart';
 import './ChosenItem.scss'
 

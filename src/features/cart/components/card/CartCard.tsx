@@ -1,15 +1,13 @@
 import React, { FC, useEffect } from 'react';
 import "./CartCard.scss"
 import { Link } from 'react-router-dom';
-import { deleteItem, toggleAmount } from '../../../../store/reducers/cartReducer';
+import { deleteItem, increaseAmount, decreaseAmount} from '../reducers/cartReducer';
 import { useDispatch } from 'react-redux';
 import { CartItem } from '../../../../types/cart';
 
 
 const CartCard: FC<CartItem> = ({item, size, orderId, amount}) => {
   const dispatch = useDispatch();
-  const increase = 1;
-  const decrease = -1;
 
   useEffect((): void => {
     if(amount === 0) dispatch(deleteItem(orderId))
@@ -28,14 +26,14 @@ const CartCard: FC<CartItem> = ({item, size, orderId, amount}) => {
         <button 
         data-id={orderId} 
         className='btn amount-btn'
-        onClick={() => dispatch(toggleAmount({orderId, decrease}))}>
+        onClick={() => dispatch(decreaseAmount({orderId}))}>
           -
         </button>
         <div className='cartExample__amount_number'>{amount}</div>
         <button 
         data-id={orderId} 
         className='btn amount-btn'
-        onClick={() => dispatch(toggleAmount({orderId, increase}))}
+        onClick={() => dispatch(increaseAmount({orderId}))}
         >
           +
         </button>
